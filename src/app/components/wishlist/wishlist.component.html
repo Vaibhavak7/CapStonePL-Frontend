@@ -1,0 +1,56 @@
+<div class="bookmarks-container">
+    <hr/>
+    <h2 class="bookmarks-header">Your Bookmarked Properties</h2>
+    <div *ngIf="bookmarks.length > 0; else noBookmarks">
+        <div class="container my-5">
+            <div class="row g-5 custom-row-margin">
+                <div class="col-12 col-md-4" *ngFor="let bookmark of bookmarks.slice(0, 9)">
+                    <div class="card property-card shadow-lg">
+                        <img src="https://cdn.sanity.io/images/ocl5w36p/production/d0b9849ac7fb4174cc9a55956f7c2740a818ad8b-1401x1120.png?w=768&auto=format&dpr=2"
+                             class="card-img-top px-2 pt-2" 
+                             alt="buildingimg" />
+                        <div class="card-body d-flex justify-content-between">
+                            <div class="px-2 pt-1">
+                                <a class="cardAminity" [routerLink]="['/property', bookmark.property.propertyId]">
+                                    <h5 class="card-title">{{bookmark.property.propertyName}}</h5>
+                                </a>
+                                <h6 class="mt-3 featuredes" style="font-size: 14px;">
+                                    <span><img src="../../../assets/Rounded.png" alt="arrow" class="img-fluid me-2" style="height: 20px;"></span>
+                                    {{bookmark.property.area + " ," + bookmark.property.city}}
+                                </h6>
+                                <h4 class="pt-3 pb-4 cardAminity">₹{{bookmark.property.rent}}</h4>
+                                <button type="button" [routerLink]="['/property', bookmark.property.propertyId]" class="btn blcolor my-3 me-3 px-4 py-3 shadow-lg" aria-current="page">
+                                    Details
+                                    <span><img src="../../../assets/rightarrow.png" alt="arrow" class="img-fluid ms-5" style="height: 20px"></span>
+                                </button>
+                            </div>
+                            <div class="ms-3 me-4">
+                                <h5 class="mb-4 mt-3 aminities" style="font-size: 12px;">
+                                    <span class="px-1">
+                                        <img src="../../../assets/user.png" alt="arrow" class="img-fluid" style="height: 15px">
+                                    </span>Guests: {{bookmark.property.maxGuests}}
+                                </h5>
+                                <h5 class="mb-4 mt-3 aminities" style="font-size: 12px;">
+                                    <span class="px-1">
+                                        <img src="../../../assets/Icon ionic-ios-bed.png" alt="arrow" class="img-fluid" style="height: 15px">
+                                    </span>{{bookmark.property.typeOfProperty}}
+                                </h5>
+                                <h5 class="mb-4 mt-3 aminities" style="font-size: 12px;">
+                                    <span class="px-1">
+                                        <img src="../../../assets/Icon ionic-md-tv.png" alt="arrow" class="img-fluid" style="height: 15px">
+                                    </span>Luxurious Living
+                                </h5>
+                                <div>
+                                    <!-- <span class="mx-auto" *ngFor="let star of stars.slice(0, bookmark.property.rent), let i=index" [class]="star"></span> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ng-template #noBookmarks>
+        <p>You have no bookmarked properties.</p>
+    </ng-template>
+</div>

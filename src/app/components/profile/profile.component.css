@@ -1,0 +1,38 @@
+.container {
+    background-color: #f8f9fa; /* Light background */
+    border-radius: 8px; /* Rounded corners */
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  }
+  
+  .profile-header {
+    color: #016450; /* Your preferred color */
+  }
+  
+  .profile-info {
+    text-align: left;
+  }
+  
+  .btn {
+    background-color: #016450; /* Consistent button color */
+    color: white;
+  }
+  
+  .btn:hover {
+    background-color: #014c3f; /* Darker shade on hover */
+  }
+  
+  .modal-header {
+    background-color: #016450; /* Modal header color */
+    color: white;
+  }
+  
+  .modal-footer {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .form-label {
+    color: #016450; /* Consistent label color */
+  }
+  

@@ -1,0 +1,71 @@
+/* Ensure space between rows */
+.row {
+  /* margin-bottom: 40px; Adjust this value for the desired space between rows */
+}
+
+/* Style for each card */
+.property-card {
+  background-color: #ffffff; /* Card background color */
+  border-radius: 10px;       /* Rounded corners */
+  transition: all 0.3s ease; /* Smooth transition effect */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Initial shadow effect */
+  margin-bottom: 20px;       /* Space between cards */
+}
+
+/* Hover effect for cards */
+.property-card:hover {
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2); /* Stronger shadow effect on hover */
+}
+
+/* Title styling */
+.card-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #016450;
+}
+
+/* Link styling within the card */
+.cardAminity {
+  color: #016450;
+  text-decoration: none;
+}
+
+.cardAminity:hover {
+  text-decoration: underline;
+}
+
+/* Feature description styling */
+.featuredes {
+  color: #666;
+}
+
+/* Button styling */
+.blcolor {
+  background-color: #016450;
+  color: white;
+  border: none;
+}
+ 
+.blcolor:hover {
+  background-color: #014737;
+}
+
+/* Amenities section styling */
+.aminities {
+  font-family: "Segoe UI";
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #999999;
+  font-size: 14px;
+}
+
+/* Star rating styling */
+.checked {
+  color: orange;
+}
+
+/* Form Styles */
+/* Form container styling */
+/* Form container styling */
+/* Form container styling */
+/* Form container styling */

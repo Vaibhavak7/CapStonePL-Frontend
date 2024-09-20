@@ -1,0 +1,124 @@
+/* Ensure space between rows */
+.row {
+    margin-bottom: 40px; /* Adjust this value for the desired space between rows */
+}
+
+/* Style for each card */
+.property-card {
+    background-color: #ffffff; /* Card background color */
+    border-radius: 10px;       /* Rounded corners */
+    transition: all 0.3s ease; /* Smooth transition effect */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Initial shadow effect */
+    margin-bottom: 20px;       /* Space between cards */
+}
+
+/* Hover effect for cards */
+.property-card:hover {
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2); /* Stronger shadow effect on hover */
+}
+
+/* Title styling */
+.card-title {
+    font-size: 1.5rem; /* Size of the title */
+    font-weight: bold;  /* Bold title */
+    color: #016450;     /* Title color */
+}
+
+/* Link styling within the card */
+.cardAminity {
+    color: #016450;     /* Link color */
+    text-decoration: none; /* Remove underline */
+}
+
+.cardAminity:hover {
+    text-decoration: underline; /* Underline on hover */
+}
+
+/* Feature description styling */
+.featuredes {
+    color: #666; /* Color for feature descriptions */
+}
+
+/* Button styling */
+.blcolor {
+    background-color: #016450; /* Button background color */
+    color: white; /* Button text color */
+    border: none; /* No border */
+}
+
+.blcolor:hover {
+    background-color: #014737; /* Darker green on hover */
+}
+
+/* Amenities section styling */
+.aminities {
+    font-family: "Segoe UI"; /* Font family */
+    font-weight: 700; /* Bold font */
+    letter-spacing: 2px; /* Spacing between letters */
+    color: #999999; /* Color for amenities */
+    font-size: 14px; /* Font size for amenities */
+}
+
+/* Star rating styling */
+.checked {
+    color: orange; /* Color for checked stars */
+}
+
+/* Bookmarks container styling */
+.bookmarks-container {
+    padding: 20px; /* Padding for bookmarks section */
+}
+
+/* Header styling */
+.bookmarks-header {
+    text-align: center; /* Center the header */
+    color: #016450; /* Green color */
+    text-decoration: underline; /* Underline effect */
+    font-weight: bold; /* Bold text */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* Shadow effect for depth */
+    margin-bottom: 20px; /* Space below the header */
+}
+
+/* Bookmark card styling */
+.bookmark-card {
+    border: 1px solid #ddd; /* Border for bookmark card */
+    border-radius: 8px; /* Rounded corners */
+    padding: 15px; /* Padding inside the card */
+    margin-bottom: 20px; /* Space between bookmark cards */
+    display: flex; /* Flexbox for layout */
+    align-items: center; /* Center items vertically */
+}
+
+/* Property image styling */
+.property-image {
+    width: 100px; /* Fixed width for property image */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 5px; /* Rounded corners */
+    margin-right: 15px; /* Space between image and text */
+}
+
+/* Bookmark details styling */
+.bookmark-details {
+    flex-grow: 1; /* Allow details to take remaining space */
+}
+
+/* User info styling */
+.user-info {
+    font-size: 12px; /* Font size for user info */
+    color: #555; /* Color for user info */
+}
+
+/* Optional: Adjustments for responsiveness */
+@media (max-width: 768px) {
+    .property-card {
+        margin-bottom: 15px; /* Reduce margin for smaller screens */
+    }
+    
+    .card-title {
+        font-size: 1.2rem; /* Smaller title size on mobile */
+    }
+
+    .aminities {
+        font-size: 12px; /* Smaller font for amenities on mobile */
+    }
+}

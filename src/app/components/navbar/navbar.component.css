@@ -1,0 +1,148 @@
+* {
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background: #ffccbc;
+}
+
+.navbar {
+  background-color: transparent;
+}
+
+.action {
+  position: relative;
+  display: inline-block;
+  z-index: 1000; /* Ensure it's above other elements */
+}
+
+.action .profile {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  overflow: hidden;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: transform 0.3s ease-in-out;
+}
+
+.action .profile img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.action .profile:hover {
+  transform: scale(1.05);
+}
+
+.action .menu {
+  position: absolute;
+  top: 60px;
+  right: 0;
+  padding: 15px 20px;
+  background: #fff;
+  width: 200px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  border-radius: 12px;
+  transition: all 0.3s ease-in-out;
+  visibility: hidden;
+  opacity: 0;
+  z-index: 9999;
+}
+
+.action .menu.active {
+  top: 70px;
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(5px);
+}
+
+.action .menu::before {
+  content: "";
+  position: absolute;
+  top: -6px;
+  right: 28px;
+  width: 12px;
+  height: 12px;
+  background: #fff;
+  transform: rotate(45deg);
+}
+
+.action .menu h3 {
+  width: 100%;
+  text-align: center;
+  font-size: 16px;
+  padding: 10px 0;
+  font-weight: 600;
+  color: #555;
+  line-height: 1.2em;
+}
+
+.action .menu h3 span {
+  font-size: 14px;
+  color: #cecece;
+  font-weight: 300;
+}
+
+.action .menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.action .menu ul li {
+  padding: 10px 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  display: flex;
+  align-items: center;
+}
+
+.action .menu ul li img {
+  max-width: 16px;
+  margin-right: 10px;
+  opacity: 0.5;
+  transition: opacity 0.3s;
+}
+
+.action .menu ul li:hover img {
+  opacity: 1;
+}
+
+.action .menu ul li a {
+  display: inline-block;
+  text-decoration: none;
+  color: #555;
+  font-size: 14px;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.action .menu ul li:hover a {
+  color: #ff5d94;
+}
+
+.action .menu ul li:last-child {
+  border-bottom: none;
+}
+
+/* Additional styling for better alignment */
+.navbar-nav .btn {
+  margin-left: 10px;
+}
+
+.navbar-brand img {
+  max-height: 50px;
+}
+
+.navbar-toggler {
+  border: none;
+}
+
+.navbar-toggler:focus {
+  outline: none;
+}
+
+.navbar-light .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,...");
+}

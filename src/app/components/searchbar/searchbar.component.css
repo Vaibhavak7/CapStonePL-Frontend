@@ -1,0 +1,107 @@
+.searchInput {
+  margin: auto;
+  background: #fff;
+  width: 75%;
+  border-radius: 5px;
+  position: relative;
+  box-shadow: 0px 1px 5px 3px rgba(0,0,0,0.12);
+  display: flex; /* Use flexbox to layout the input fields */
+  align-items: center; /* Center items vertically */
+  justify-content: space-between; /* Ensure input and icon are spaced correctly */
+}
+
+.searchInput input {
+  height: 55px;
+  width: calc(100% - 50px); /* Adjust width to accommodate input and icon */
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  padding: 0 20px;
+  font-size: 18px;
+  box-shadow: 0px 1px 5px rgba(0,0,0,0.1);
+}
+
+.searchInput.active input {
+  border-radius: 15px 5px 0 0;
+}
+
+.searchInput .resultBox {
+  position: absolute;
+  top: 55px; /* Align the result box below the input field */
+  left: 0;
+  width: calc(100% - 70px); /* Ensure dropdown width matches the input width */
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 0px 1px 5px rgba(0,0,0,0.1);
+  max-height: 280px;
+  overflow-y: auto;
+  z-index: 1000;
+  display: none; /* Initially hidden */
+}
+
+.searchInput.active .resultBox {
+  display: block; /* Show the result box when active */
+}
+
+.resultBox ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.resultBox li {
+  padding: 8px 12px;
+  display: block;
+  width: 100%;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+.resultBox li:hover {
+  background: #efefef;
+}
+
+.searchInput .icon {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  height: 35px;
+  width: 35px;
+  text-align: center;
+  line-height: 35px;
+  font-size: 20px;
+  color: #016450;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+.filters {
+  display: flex;
+  gap: 15px; /* Space between dropdowns */
+  margin-top: 40px;
+  justify-content: center; /* Center filters horizontally */
+}
+
+.filters select {
+  height: 40px;
+  width: 100%;
+  max-width: 200px; /* Adjust the max width as needed */
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 0 10px;
+  font-size: 16px;
+  background-color: white; /* Default background */
+  color: #333; /* Default text color */
+}
+
+.filters select:hover,
+.filters select:focus {
+  border-color: #016450; /* Green border when focused/hovered */
+  outline: none; /* Remove default outline */
+  box-shadow: 0 0 5px 2px rgba(1, 100, 80, 0.3); /* Green shadow */
+}
+
+.filters option:hover {
+  background-color: #016450; /* Green background when hovering over options */
+  color: white; /* White text color on hover */
+}

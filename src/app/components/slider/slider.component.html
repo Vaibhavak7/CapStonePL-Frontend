@@ -1,0 +1,7 @@
+<div class="slider">
+    <div class="item" *ngFor="let slide of slides; let i = index" [ngStyle]="getSlideStyle(i)">
+        <img [src]="slide.imageUrl" alt="Random Image" />
+    </div>
+    <button id="next" (click)="nextSlide()">></button>
+    <button id="prev" (click)="prevSlide()"><</button>
+</div>

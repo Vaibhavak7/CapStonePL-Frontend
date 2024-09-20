@@ -1,0 +1,579 @@
+/* Header start  */
+
+.property-header {
+  background-color: #f0f0f0; /* Light grey background */
+  padding: 10px;
+  padding-inline: 20px;
+  border-radius: 12px; /* Rounded corners */
+  border: 2px solid #016450; /* Greenish border */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px; /* Side margins for spacing */
+  margin-inline: 140px;
+}
+
+.header-title {
+  display: flex;
+  align-items: center;
+}
+
+.header-property-name {
+  font-size: 36px;
+  font-weight: bold;
+  color: #016450; /* Default green color */
+  text-transform: uppercase; /* Capitalize property name */
+  position: relative;
+}
+
+.header-property-name::before {
+  content: attr(data-name);
+  color: white; /* Inner white color */
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1; /* Place inner color behind the outer color */
+  text-shadow: 0 0 5px #016450; /* Green outer shadow effect */
+}
+
+.separator {
+  font-size: 36px;
+  margin: 0 10px; /* Space around separator */
+}
+
+.header-property-city {
+  font-size: 36px;
+  font-weight: bold;
+  color: #016450; /* Primary color */
+}
+
+.header-info {
+  display: flex;
+  align-items: center;
+  gap: 20px; /* Space between info items */
+}
+
+.header-max-guests, .header-rent {
+  font-size: 18px;
+}
+
+.header-reviews {
+  display: flex;
+  align-items: center;
+}
+
+.header-review-stars {
+  font-size: 20px;
+  color: #016450; /* Gold color for stars */
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+  .property-header {
+    margin-inline: 80px;
+  }
+
+  .header-title {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .header-property-name, .header-property-city {
+    font-size: 30px;
+  }
+
+  .separator {
+    font-size: 30px;
+  }
+
+  .header-info {
+    flex-direction: column;
+    gap: 10px; /* Reduce space between items */
+  }
+}
+
+@media (max-width: 768px) {
+  .property-header {
+    margin-inline: 20px;
+    padding: 15px;
+  }
+
+  .header-title {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .header-property-name, .header-property-city {
+    font-size: 24px;
+  }
+
+  .separator {
+    font-size: 24px;
+  }
+
+  .header-info {
+    flex-direction: column;
+    gap: 5px; /* Reduce space between items */
+  }
+
+  .header-max-guests, .header-rent {
+    font-size: 16px;
+  }
+
+  .header-review-stars {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .property-header {
+    margin-inline: 10px;
+    padding: 10px;
+  }
+
+  .header-title {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .header-property-name, .header-property-city {
+    font-size: 20px;
+  }
+
+  .separator {
+    font-size: 20px;
+  }
+
+  .header-info {
+    flex-direction: column;
+    gap: 5px; /* Reduce space between items */
+  }
+
+  .header-max-guests, .header-rent {
+    font-size: 14px;
+  }
+
+  .header-review-stars {
+    font-size: 16px;
+  }
+}
+
+
+/* -- Header End */
+
+
+/* Image start  */
+.blcolor {
+    background-color: #016450;
+    font-family: "Segoe UI";
+    font-weight: 700;
+    src: local("Segoe UI Bold");
+    letter-spacing: 1.5px;
+    color: #ffffff;
+  }
+  
+  .bscolor {
+    background-color: #ffffff;
+    font-family: "Segoe UI";
+    font-weight: 700;
+    src: local("Segoe UI Bold");
+    letter-spacing: 1.5px;
+    color: #016450;
+  }
+  
+  .des0 {
+    margin-top: 150px;
+    color: #016450;
+    letter-spacing: 5px;
+    font-family: "Segoe UI";
+    font-weight: 700;
+    src: local("Segoe UI Bold");
+    font-size: 24px;
+  }
+  
+  .featuredes {
+    font-size: 14px;
+    font-family: "Segoe UI";
+    font-weight: 700;
+    src: local("Segoe UI Bold");
+    letter-spacing: 2px;
+    color: #999999;
+  }
+  
+  .titledes {
+    font-family: "Segoe UI";
+    font-weight: 700;
+    src: local("Segoe UI Bold");
+    letter-spacing: 1.5px;
+    font-size: 38px;
+  }
+  
+  .aminities {
+    font-family: "Segoe UI";
+    font-weight: 700;
+    src: local("Segoe UI Bold");
+    letter-spacing: 2px;
+    color: #999999;
+  }
+  
+  .cont-med {
+    color: #999999;
+    letter-spacing: 1px;
+    font-family: "Segoe UI";
+    font-weight: 600;
+    src: local("Segoe UI SemiBold");
+    font-size: medium;
+    text-align: justify;
+    line-height: 1.5rem;
+  }
+  
+  .cont-name {
+    color: #016450;
+    font-family: "Segoe UI";
+    font-weight: 700;
+    src: local("Segoe UI Bold");
+    letter-spacing: 1.5px;
+    font-size: 14px;
+  }
+  
+ /* IMage End  */
+
+ /* Poperty DEtails start  */
+
+ .property-layout {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.property-name1{
+  text-align: center;
+  color: #016450;
+}
+.property-info {
+  width: 55%;
+  padding-left: 65px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.booking-sidebar {
+  width: 30%;
+  padding: 20px;
+}
+
+.sidebar-content {
+  background-color: #016450;
+  color: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.pricing-section {
+  margin-bottom: 20px;
+}
+
+.price-info {
+  margin-bottom: 20px;
+}
+
+.price-info .price {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.price-info .discounted-price {
+  font-size: 20px;
+  color: #ff4d4d;
+}
+
+.price-info .price-per-night {
+  font-size: 14px;
+}
+
+.dates-selector, .guests-selector, .reserve-section {
+  margin-bottom: 20px;
+}
+
+.change-dates, .guests-button, .reserve-button {
+  display: block;
+  width: 100%;
+  background-color: #ffffff;
+  color: #016450;
+  border: none;
+  border-radius: 4px;
+  padding: 10px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.change-dates .label, .guests-button .label {
+  font-weight: bold;
+}
+
+.reserve-button {
+  font-weight: bold;
+}
+
+.reserve-button:hover {
+  background-color: #e0e0e0;
+}
+
+.pricing-summary {
+  margin-top: 20px;
+}
+
+.pricing-summary .nightly-rate, .discount, .total-before-taxes {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 0;
+}
+
+.property-info {
+
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.info-section {
+  max-width: 500px;
+}
+
+.property-name {
+  color: #016450;
+  font-size: 24px;
+  font-weight: bold;
+  color: initial; /* Default color */
+  margin-bottom: 10px;
+}
+
+.property-description {
+  font-size: 16px;
+  font-style: italic; /* Italic text */
+  margin-bottom: 20px;
+}
+
+.property-details {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.detail-item {
+  width: 50%;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.detail-label {
+  font-weight: bold;
+  color: #016450;
+}
+
+.detail-value {
+  font-weight: bold;
+  color: #555;
+}
+
+.property-features {
+  margin-top: 20px;
+}
+
+.features-heading {
+  font-size: 16px; /* Same as feature item text */
+  font-weight: bold;
+  color: #016450; /* Heading color */
+  margin-bottom: 10px;
+}
+
+.features-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px; /* Gap between items */
+}
+
+.feature-item {
+  background-color: #f0f0f0;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 5px 10px;
+  box-sizing: border-box;
+  flex: 1 1 auto; /* Allow items to grow and shrink */
+  text-align: center;
+  color: black; /* Feature item text color */
+}
+
+.address-property {
+  margin-top: 20px; /* Add top margin */
+}
+
+@media (max-width: 768px) {
+  .feature-item {
+    flex: 1 1 100%; /* Full width on smaller screens */
+  }
+}
+
+
+ /* Property Details end  */
+  /* ---Review start>>>> */
+
+  .review-heading {
+    text-align: center;
+    font-size: 26px; /* Adjust size as needed */
+    font-weight: bold;
+    color: #016450; /* Adjust color if needed */
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.review-heading::after {
+    content: "";
+    display: block;
+    width: 80px;
+    height: 4px;
+    background-color: #016450; /* Color of the line */
+    margin: 10px auto 0;
+}
+  .review-slider-container {
+    position: relative;
+    max-width: 100%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    background-color: #fff; /* Background color for the container */
+  }
+  
+  .slider-wrapper {
+    display: flex;
+    width: 100%;
+    transition: transform 0.5s ease; /* Smooth transition for sliding */
+  }
+  
+  .review-slide {
+    flex: 1;
+    text-align: center;
+    margin: 20px 10px; /* Margin added to the top and bottom */
+    background-color: #ffffff; /* Card background color */
+    border-radius: 10px; /* Rounded corners for cards */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow effect covering the entire card */
+    padding: 20px; /* Spacing inside the card */
+  }
+  
+  .review-image {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    margin-bottom: 10px; /* Space between image and text */
+  }
+  
+  .review-text {
+    font-style: italic;
+    margin-top: 10px;
+    color: #333; /* Text color */
+  }
+  
+  .review-author {
+    font-weight: bold;
+    margin-top: 5px;
+    color: #016450; /* Author name color */
+  }
+  
+  .review-position {
+    color: #555;
+    font-size: 0.9em;
+  }
+  
+  .prev-slide, .next-slide {
+    cursor: pointer;
+    width: 50px; /* Width of the button */
+    height: 50px; /* Height of the button */
+    padding: 10px 0; /* Vertical padding only */
+    background-color: #ddd;
+    border: none;
+    font-size: 20px;
+    transition: background-color 0.3s;
+    border-radius: 0; /* Square buttons */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  .prev-slide:hover, .next-slide:hover {
+    background-color: #bbb;
+  }
+  
+  .prev-slide {
+    position: absolute;
+    left: 10px;
+  }
+  
+  .next-slide {
+    position: absolute;
+    right: 10px;
+  }
+/* --Review End-   */
+
+/* General Layout Styles */
+.container {
+  padding: 20px;
+}
+
+.row {
+  margin-bottom: 20px;
+}
+
+/* Center property name, stars, and rent */
+.text-center {
+  text-align: center;
+}
+
+.stars i {
+  font-size: 20px; /* Adjust star size if needed */
+  color: #FFD700; /* Gold color for stars */
+  margin: 0 2px; /* Spacing between stars */
+}
+
+/* Amenities container styles */
+.amenities-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.amenities {
+  font-size: 16px;
+  margin-right: 15px;
+  display: flex;
+  align-items: center;
+}
+
+.amenities img {
+  margin-right: 10px;
+}
+
+.titledes {
+  font-size: 24px;
+  font-weight: bold;
+  color: #016450;
+}
+
+
+.custom-carousel {
+  max-width: 58%; /* Adjust the width as needed */
+  margin:60px auto; /* Adjust the margin as needed */
+  border: #016450 5px ;
+}
+
+.custom-carousel .carousel-inner img {
+  height: auto; /* Ensure the images maintain their aspect ratio */
+  max-height: 500px; /* Adjust the maximum height as needed */
+  object-fit:  fill; /* Ensure the images cover the container without distortion */
+}

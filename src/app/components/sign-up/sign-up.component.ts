@@ -12,7 +12,7 @@ import { AuthService } from 'src/app/Service/Authenticate/auth.service';
 export class SignUpComponent {
 
   username: FormControl; 
-  email: FormControl;
+  email: FormControl; 
   password: FormControl;
   signUpForm: FormGroup;
   successFlag: boolean;
@@ -35,6 +35,7 @@ export class SignUpComponent {
   handleSignUp() {
     if (this.signUpForm.valid) {
       const user = new User(this.username.value, this.email.value, this.password.value, "USER");
+      console.log(user);
       this.authService.register(user).subscribe(
         response => {
           console.log('User registered successfully', response);
@@ -44,7 +45,7 @@ export class SignUpComponent {
           // Redirect to login page after 3 seconds
           setTimeout(() => {
             this.router.navigate(['/signin']);
-          }, 3000); // 3 seconds
+          }, 1000000); // 3 seconds
         },
         error => {
           console.error('Error registering user', error);

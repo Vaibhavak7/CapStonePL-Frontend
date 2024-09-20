@@ -1,0 +1,43 @@
+<div class="container my-5">
+  <form (ngSubmit)="onSubmit()">
+    <div class="searchInput" [ngClass]="{'active': isActive}">
+      <input type="text" [(ngModel)]="cityData" (keyup)="onKeyUp('city')" name="cityInput" placeholder="City...">
+      <div class="resultBox" *ngIf="isActive">
+        <ul>
+          <li *ngFor="let suggestion of filteredSuggestions" (click)="selectSuggestion(suggestion)">
+            {{ suggestion }}
+          </li>
+        </ul>
+      </div>
+      <div class="icon">
+        <i class="bi bi-search" (click)="onSubmit()"></i>
+      </div>
+    </div>
+
+    <div class="filters">
+      <!-- Price Range Dropdown -->
+      <select [(ngModel)]="selectedPriceRange" name="priceRange" (change)="updatePriceRange($event)">
+        <option value="">Select Price Range</option>
+        <option *ngFor="let range of priceRanges" [value]="range">{{ range }}</option>
+      </select>
+
+      <!-- Sort By Price Dropdown -->
+      <select [(ngModel)]="selectedSortBy" name="sortByPrice" (change)="updateSortBy($event)">
+        <option value="">Sort By Price</option>
+        <option *ngFor="let option of sortOptions" [value]="option">{{ option }}</option>
+      </select>
+
+      <!-- Sort By Rating Dropdown -->
+      <select [(ngModel)]="selectedRatingSortBy" name="sortByRating" (change)="updateRatingSort($event)">
+        <option value="">Sort By Rating</option>
+        <option *ngFor="let option of ratingSortOptions" [value]="option">{{ option }}</option>
+      </select>
+
+      <!-- Features Dropdown -->
+      <select [(ngModel)]="selectedFeatures" name="features" (change)="updateFeatures($event)">
+        <option value="">Select Features</option>
+        <option *ngFor="let feature of features" [value]="feature">{{ feature }}</option>
+      </select>
+    </div>
+  </form>
+</div>
