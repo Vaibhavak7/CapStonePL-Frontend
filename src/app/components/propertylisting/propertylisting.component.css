@@ -64,6 +64,38 @@
   color: orange;
 }
 
+/* Ensure your styles have higher specificity */
+
+
+/* Optionally, override the styles for other pagination states */
+
+::ng-deep .ngx-pagination .current {
+  padding: .1875rem .625rem;
+  background: #016450 !important;
+  color: #fefefe;
+  cursor: default; 
+}
+
+/* ::ng-deep .ngx-pagination li {
+  background: #016450 !important; 
+} */
+
+::ng-deep .ngx-pagination .pagination-item {
+  padding: 0.1875rem 0.625rem !important;
+  background: transparent !important;
+  color: #016450 !important;
+}
+
+::ng-deep .ngx-pagination .pagination-item:hover {
+  background: rgba(1, 100, 80, 0.2) !important;
+  color: #016450 !important;
+}
+
+::ng-deep .ngx-pagination .pagination-item.disabled {
+  color: #ccc !important;
+  cursor: not-allowed !important;
+}
+
 /* Form Styles */
 /* Form container styling */
 /* Form container styling */

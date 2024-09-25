@@ -16,7 +16,7 @@ export class HomeComponent implements OnInit {
     { image: 'https://www.constructionweekonline.in/cloud/2022/09/02/house-and-keys.jpeg' },
     { image: 'https://agarwsalestates.com/images/blogs/property-management.jpg' }
   ];
-
+ 
   get slideWidth(): string {
     return `${100 / this.slides.length}%`; // Calculate width of each slide
   }

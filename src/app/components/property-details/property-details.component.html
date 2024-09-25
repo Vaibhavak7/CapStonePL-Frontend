@@ -1,11 +1,10 @@
-
 <!-- Header Start -->
 
 <div class="property-header">
     <h1 class="header-title">
         <span class="header-property-name">{{ property?.propertyName }}</span>
         <span class="separator">|</span>
-        <span class="header-property-city">{{property?.city}}</span>
+        <span class="header-property-city">{{ property?.city }}</span>
     </h1>
     <div class="header-info">
         <span class="header-max-guests">Max Guests: {{ property?.maxGuests }}</span>
@@ -13,10 +12,20 @@
         <span class="header-rent">Rent: ₹{{ property?.rent }}</span>
         <span class="header-rent">|</span>
         <div class="header-reviews">
-            <span class="header-review-stars">★★★★☆</span>
+            <span class="header-review-stars" *ngFor="let star of getStars(property?.avgRating)">
+                <i [class]="star"></i>
+            </span>
         </div>
+        <!-- Wishlist Icon -->
+        <button class="wishlist-button" (click)="toggleWishlist()"  *ngIf="auth.isLoggedIn">
+            <span class="wishlist-icon">
+                <i class="bi bi-heart" [ngClass]="{'active': isWished}"></i>
+            </span>
+        </button>
     </div>
 </div>
+
+
 
 <!-- Header end  -->
 <!-- pROPERTY SCROLLER START  -->
@@ -66,7 +75,7 @@
         </div>
     </div>
 </div> -->
-<hr/>
+<hr />
 
 <!-- Images End  -->
 
@@ -78,25 +87,26 @@
             <h2 class="mt-4 titledes">{{property?.propertyName}}</h2>
             <div class="d-flex justify-content-center mt-3">
                 <div class="stars">
-                    <i class="bi bi-star"></i>
-                    <i class="bi bi-star"></i>
-                    <i class="bi bi-star"></i>
-                    <i class="bi bi-star"></i>
-                    <i class="bi bi-star"></i>
+                    <span *ngFor="let star of getStars(property?.avgRating)">
+                        <i [class]="star"></i>
+                    </span>
                 </div>
             </div>
+            
         </div>
 
         <div class="col-12 mt-4 d-flex justify-content-center amenities-container">
             <h5 class="mb-5 amenities">
                 <span class="me-2">
-                    <img src="../../../assets/Icon awesome-shower.png" alt="shower" class="img-fluid" style="height: 25px" />
+                    <img src="../../../assets/Icon awesome-shower.png" alt="shower" class="img-fluid"
+                        style="height: 25px" />
                 </span>
                 Finished Baths
             </h5>
             <h5 class="mb-5 amenities">
                 <span class="me-2">
-                    <img src="../../../assets/Icon ionic-ios-bed.png" alt="bed" class="img-fluid" style="height: 25px" />
+                    <img src="../../../assets/Icon ionic-ios-bed.png" alt="bed" class="img-fluid"
+                        style="height: 25px" />
                 </span>
                 Spacious Bedrooms
             </h5>
@@ -108,7 +118,8 @@
             </h5>
             <h5 class="mb-5 amenities">
                 <span class="me-2">
-                    <img src="../../../assets/Icon awesome-parking.png" alt="parking" class="img-fluid" style="height: 25px" />
+                    <img src="../../../assets/Icon awesome-parking.png" alt="parking" class="img-fluid"
+                        style="height: 25px" />
                 </span>
                 Ample Parking Space
             </h5>
@@ -120,7 +131,8 @@
             </h5>
             <h5 class="mb-5 amenities">
                 <span class="me-2">
-                    <img src="../../../assets/Icon map-tennis.png" alt="tennis" class="img-fluid" style="height: 25px" />
+                    <img src="../../../assets/Icon map-tennis.png" alt="tennis" class="img-fluid"
+                        style="height: 25px" />
                 </span>
                 Tennis Court
             </h5>
@@ -135,11 +147,11 @@
 <!-- end  -->
 
 <!-- Property details start  -->
-<hr/>
+<hr />
 <div class="property-layout">
     <div class="property-info">
         <div class="info-section">
-            <h2 class="property-name1" >{{ property?.propertyName }}</h2>
+            <h2 class="property-name1">{{ property?.propertyName }}</h2>
             <p class="property-description">{{ property?.description }}</p>
             <div class="property-details">
                 <div class="detail-item">
@@ -172,7 +184,7 @@
         </div>
     </div>
 
-    <div class="booking-sidebar">
+    <!-- <div class="booking-sidebar">
         <div class="sidebar-content">
             <div class="pricing-section">
                 <div class="pricing-details">
@@ -221,7 +233,80 @@
                 </div>
             </div>
         </div>
+    </div> -->
+
+
+    <div class="booking-sidebar">
+        <div class="sidebar-content">
+            <div class="pricing-section">
+                <div class="pricing-details">
+                    <div class="price-info">
+                        <span class="price">{{ discountedPrice }}</span>
+                        <span class="price-per-night">/per night</span>
+                    </div>
+                </div>
+                <div class="dates-selector">
+                    <label class="check-in">
+                        <div class="label">Check-in</div>
+                        <input type="date" 
+                               [(ngModel)]="checkInDate" 
+                               (ngModelChange)="onCheckInDateChange($event)" 
+                               [min]="minDate" />
+                        <div class="selected-date">Selected: {{ checkInDate | date: 'dd-MM-yyyy' }}</div>
+                    </label>
+                    <label class="check-out">
+                        <div class="label">Check-out</div>
+                        <input type="date" 
+                               [(ngModel)]="checkOutDate" 
+                               (ngModelChange)="onCheckOutDateChange($event)" 
+                               [min]="checkInDate ? addDays(checkInDate, 1) : minDate" />
+                        <div class="selected-date">Selected: {{ checkOutDate | date: 'dd-MM-yyyy' }}</div>
+                    </label>
+                    
+
+                </div> 
+                <div class="guests-selector">
+                    <label class="guests-label">Guests: </label>
+                    <select [(ngModel)]="guestsCount">
+                        <option *ngFor="let guest of guestOptions" [value]="guest">{{ guest }}</option>
+                    </select>
+                </div>
+                <div class="reserve-section">
+                    <!-- Button shown if user is logged in -->
+                    <button class="reserve-button" *ngIf="auth.isLoggedIn" 
+                            (click)="onReserveClick()" 
+                            [disabled]="!checkInDate || !checkOutDate">
+                      <span class="reserve-text">Reserve</span>
+                    </button>
+                    <button class="reserve-button" *ngIf="!auth.isLoggedIn" 
+                    [routerLink]="['/signin']"  >
+                      <span class="reserve-text">Please Login</span>
+                    </button>
+                  
+                    <!-- Button shown if user is NOT logged in -->
+                    <!-- <button class="login-button" *ngIf="!auth.isLoggedIn" 
+                            [routerLink]="['/sign-in']">
+                      <span class="login-text">Please Login</span>
+                    </button> -->
+                  </div>
+                  
+                  
+                <div class="pricing-summary">
+                    <div class="nightly-rate">
+                        <span class="rate-description">Details: </span>
+                        <span class="rate-description">{{ originalPrice }} x {{ calculateNights() }} nights</span>
+
+                    </div>
+                    <div class="total-before-taxes">
+                        <span class="total-description">Total before taxes: </span>
+                        <span class="total-amount">{{ totalPrice }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+
+
 </div>
 
 
@@ -252,25 +337,29 @@
             </div>
         </div>
     </div> -->
-    <hr/>
-    <h1 class="review-heading">Reviews ({{ reviews.length }})</h1>
-    <div class="mx-auto">
-        <div class="review-slider-container">
-            <div class="slider-wrapper">
-                <div *ngFor="let review of displayedReviews" class="review-slide">
-                    <img src="../../../assets/heroimg.png" alt="{{review.feedbackId}}" class="review-image">
-                    <p class="review-text">{{ review.comment }}</p>
-                    <h3 class="review-author">{{ review.user.userName }}</h3>
-                    <p class="review-position">{{ review.postedDate }}</p>
-                </div>
+<hr />
+<h1 class="review-heading">Reviews ({{ reviews.length }})</h1>
+<div class="mx-auto">
+    <div class="review-slider-container">
+        <div class="slider-wrapper">
+            <div *ngFor="let review of displayedReviews" class="review-slide">
+                <img src="../../../assets/heroimg.png" alt="{{review.feedbackId}}" class="review-image">
+                <p class="review-text">{{ review.comment }}</p>
+                    <span class="header-review-stars" *ngFor="let star of getStars(review.rating)">
+                        <i [class]="star"></i>
+                    </span>
+                <h3 class="review-author">{{ review.user.userName }}</h3>
+                <p class="review-position">{{ review.postedDate }}</p>
             </div>
-    
-            <!-- Navigation Arrows -->
-            <button (click)="previousSlide()" class="prev-slide">❮</button>
-            <button (click)="nextSlide()" class="next-slide">❯</button>
         </div>
+
+        <!-- Navigation Arrows -->
+        <button (click)="previousSlide()" class="prev-slide">❮</button>
+        <button (click)="nextSlide()" class="next-slide">❯</button>
     </div>
-    
+</div>
+
+
 
 
 

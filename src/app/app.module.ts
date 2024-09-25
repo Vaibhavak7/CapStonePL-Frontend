@@ -21,6 +21,8 @@ import { WishlistComponent } from './components/wishlist/wishlist.component';
 import { BookingsComponent } from './components/bookings/bookings.component';
 import { FeedbacksComponent } from './components/feedbacks/feedbacks.component';
 import { HelppComponent } from './components/helpp/helpp.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgxPaginationModule } from 'ngx-pagination';
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,7 +47,9 @@ import { HelppComponent } from './components/helpp/helpp.component';
     ReactiveFormsModule,
     HttpClientModule,
     CarouselModule.forRoot(),
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    NgxPaginationModule
 
   ],
   providers: [],

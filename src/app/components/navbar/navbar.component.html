@@ -31,7 +31,7 @@
               <img src="../../../assets/user.png" alt="Avatar" />
             </div>
             <div class="menu" [ngClass]="{ 'active': isMenuActive }">
-              <h3>{{ userName }}<br /><span>{{ userRole }}</span></h3>
+              <h3>{{authService.getUserDetails().userName}}<br /><span>{{ authService.getUserDetails().email }}</span></h3>
               <ul>
                 <li>
                   <img src="../../../assets/user.png" alt="Profile" />

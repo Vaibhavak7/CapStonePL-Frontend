@@ -19,6 +19,7 @@ export class PropertyDTO {
     area: string;
     postedOn: string;  // Default as empty string, you can convert it to Date later
     maxGuests: number;
+    avgRating?:number
   
     constructor() {
       this.state = '';

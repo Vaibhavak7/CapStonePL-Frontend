@@ -93,7 +93,7 @@
                                                 BUY NOW
                                                 <span class="material-icons">
                                                     navigate_next
-                                                </span>
+                                                </span> 
                                             </button>
                                         </div>
                                     </div>
@@ -108,53 +108,66 @@
     </div>
 </div> -->
 
-<!-- Cards --> 
+<!-- Cards -->
 <div class="container my-5">
     <div class="row g-5 custom-row-margin">
-      <div class="col-12 col-md-4" *ngFor="let property of propertylist.properties.slice(0, 9)">
-        <div class="card property-card shadow-lg">
-          <img src="https://cdn.sanity.io/images/ocl5w36p/production/d0b9849ac7fb4174cc9a55956f7c2740a818ad8b-1401x1120.png?w=768&auto=format&dpr=2" 
-               class="card-img-top px-2 pt-2" 
-               alt="buildingimg" />
-          <div class="card-body d-flex justify-content-between">
-            <div class="px-2 pt-1">
-              <a class="cardAminity" routerLink="/property/{{property.propertyId}}">
-                <h5 class="card-title">{{property.propertyName}}</h5>
-              </a>
-              <h6 class="mt-3 featuredes" style="font-size: 14px;">
-                <span><img src="../../../assets/Rounded.png" alt="arrow" class="img-fluid me-2" style="height: 20px;"></span>
-                {{property.area + " ," + property.city}}
-              </h6>
-              <h4 class="pt-3 pb-4 cardAminity">₹{{property.rent}}</h4>
-              <button type="button" routerLink="/property/{{property.propertyId}}" class="btn blcolor my-3 me-3 px-4 py-3 shadow-lg" aria-current="page">
-                Details
-                <span><img src="../../../assets/rightarrow.png" alt="arrow" class="img-fluid ms-5" style="height: 20px"></span>
-              </button>
-            </div>
-            <div class="ms-3 me-4">
-              <h5 class="mb-4 mt-3 aminities" style="font-size: 12px;">
-                <span class="px-1">
-                  <img src="../../../assets/user.png" alt="arrow" class="img-fluid" style="height: 15px">
-                </span>Guests:{{property.maxGuests}}
-              </h5>
-              <h5 class="mb-4 mt-3 aminities" style="font-size: 12px;">
-                <span class="px-1">
-                  <img src="../../../assets/Icon ionic-ios-bed.png" alt="arrow" class="img-fluid" style="height: 15px">
-                </span>{{property.typeOfProperty}}
-              </h5>
-              <h5 class="mb-4 mt-3 aminities" style="font-size: 12px;">
-                <span class="px-1">
-                  <img src="../../../assets/Icon ionic-md-tv.png" alt="arrow" class="img-fluid" style="height: 15px">
-                </span>Luxurious Living
-              </h5>
-              <div>
-                <span class="mx-auto" *ngFor="let star of stars.slice(0,property.rent), let i=index" [class]="star"></span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+        <div class="col-12 col-md-4" *ngFor="let property of this.propertylist.properties | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage }">
+            <div class="card property-card shadow-lg">
+                <img src="https://cdn.sanity.io/images/ocl5w36p/production/d0b9849ac7fb4174cc9a55956f7c2740a818ad8b-1401x1120.png?w=768&auto=format&dpr=2"
+                    class="card-img-top px-2 pt-2" alt="buildingimg" />
+                <div class="card-body d-flex justify-content-between">
+                    <div class="px-2 pt-1">
+                        <a class="cardAminity" routerLink="/property/{{property.propertyId}}">
+                            <h5 class="card-title">{{property.propertyName}}</h5>
+                        </a>
+                        <h6 class="mt-3 featuredes" style="font-size: 14px;">
+                            <span><img src="../../../assets/Rounded.png" alt="arrow" class="img-fluid me-2"
+                                    style="height: 20px;"></span>
+                            {{property.area + " ," + property.city}}
+                        </h6>
+                        <h4 class="pt-3 pb-4 cardAminity">₹{{property.rent}}</h4>
+                        <button type="button" routerLink="/property/{{property.propertyId}}"
+                            class="btn blcolor my-3 me-3 px-4 py-3 shadow-lg" aria-current="page">
+                            Details
+                            <span><img src="../../../assets/rightarrow.png" alt="arrow" class="img-fluid ms-5"
+                                    style="height: 20px"></span>
+                        </button>
+                    </div>
+                    <div class="ms-3 me-4">
+                        <h5 class="mb-4 mt-3 aminities" style="font-size: 12px;">
+                            <span class="px-1">
+                                <img src="../../../assets/user.png" alt="arrow" class="img-fluid" style="height: 15px">
+                            </span>Guests:{{property.maxGuests}}
+                        </h5>
+                        <h5 class="mb-4 mt-3 aminities" style="font-size: 12px;">
+                            <span class="px-1">
+                                <img src="../../../assets/Icon ionic-ios-bed.png" alt="arrow" class="img-fluid"
+                                    style="height: 15px">
+                            </span>{{property.typeOfProperty}}
+                        </h5>
+                        <h5 class="mb-4 mt-3 aminities" style="font-size: 12px;">
+                            <span class="px-1">
+                                <img src="../../../assets/Icon ionic-md-tv.png" alt="arrow" class="img-fluid"
+                                    style="height: 15px">
+                            </span>Luxurious Living
+                        </h5>
+                        <div>
+                            <span class="mx-auto" *ngFor="let star of getStars(property.avgRating), let i=index"
+                                [class]="star"></span>
+                        </div>
 
-  
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Pagination Controls -->
+<div class="container d-flex justify-content-center mt-3" *ngIf="totalItems > itemsPerPage">
+    <pagination-controls 
+        class="pagination-bg" 
+        (pageChange)="currentPage = $event">
+    </pagination-controls>
+</div>
+ 

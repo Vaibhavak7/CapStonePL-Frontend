@@ -75,7 +75,7 @@ export class AuthService {
 
   // Expose user details if needed
   getUserDetails(): UserDetails {
-    console.log("Get User Details:", this.userDetails); // Debug log
+    // console.log("Get User Details:", this.userDetails); // Debug log
     return this.userDetails;
   }
 
@@ -137,7 +137,7 @@ export class AuthService {
     localStorage.removeItem('currentUser');
     this.isLoggedIn = false;
     this.userDetails = { userName: '', email: '', role: '', jwt: '', userId: 0 }; // Reset userDetails
-    this.router.navigate(['/signup']);
+    // this.router.navigate(['/signup']);
   }
 
 

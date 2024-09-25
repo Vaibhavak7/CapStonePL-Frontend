@@ -577,3 +577,25 @@
   max-height: 500px; /* Adjust the maximum height as needed */
   object-fit:  fill; /* Ensure the images cover the container without distortion */
 }
+
+.wishlist-button {
+  background: transparent; /* Default background */
+  border: none;
+  cursor: pointer;
+}
+
+.wishlist-icon {
+  display: inline-block; /* To allow background color on the icon */
+  padding: 0.5rem; /* Add padding for clickable area */
+}
+
+.wishlist-icon i {
+  transition: background-color 0.3s; /* Smooth transition for background */
+}
+
+.wishlist-icon i.active {
+  color: #016450; 
+  /* border-radius: 50%; Optional: makes the background circular */
+  padding: 0.2rem; /* Adjust padding as needed */
+}
+

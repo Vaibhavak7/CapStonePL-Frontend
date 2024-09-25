@@ -82,68 +82,73 @@
         <h6 class="text-center mt-4">Have an account? <a href="../signin" class="link">Log in</a></h6>
     </div>
 </div> -->
-
 <div class="container-fluid my-5 p-5 card shadow-lg bg-white rounded border-0" style="width: auto;">
-    <div class="row d-flex justify-content-between py-lg-4 px-4">
-  
-      <div class="col-lg-6 d-none d-lg-block align-self-stretch">
-        <h2 class="h2">Sign Up to Start Booking your Dream Property</h2>
-        <h6 class="h6 pb-1 mb-lg-4">Have an account? <a href="../signin" class="link">Log in</a></h6>
-        <img src="../../../assets/signup.png" class="img-fluid h-50 w-100 mt-5" />
+  <div class="row d-flex justify-content-between py-lg-4 px-4">
+
+    <div class="col-lg-6 d-none d-lg-block align-self-stretch">
+      <h2 class="h2">Sign Up to Start Booking your Dream Property</h2>
+      <h6 class="h6 pb-1 mb-lg-4">Have an account? <a href="../signin" class="link">Log in</a></h6>
+      <img src="../../../assets/signup.png" class="img-fluid h-50 w-100 mt-5" />
+    </div>
+
+    <div class="col-lg-5 mb-2">
+      <!-- Error Messages -->
+      <div class="alert alert-danger d-flex align-items-center mt-4" role="alert" *ngIf="errorFlag">
+        <i class="bi bi-exclamation-triangle mx-2"></i>
+        <div class="ms-2">User Already Registered.</div>
       </div>
-  
-      <div class="col-lg-5 mb-2">
-        <!-- Error Messages -->
-        <div class="alert alert-danger d-flex align-items-center mt-4" role="alert" *ngIf="errorFlag">
-          <i class="bi bi-exclamation-triangle mx-2"></i>
-          <div class="ms-2">User Already Registered.</div>
-        </div>
-  
-        <!-- Success Message -->
-        <div class="alert alert-success d-flex align-items-center mt-4" role="alert" *ngIf="successFlag">
-          <i class="bi bi-check-circle" style="color: #016450;"></i>
-          <div class="ms-2">Registration successful! Redirecting to the login page...</div>
-        </div>
-  
-        <!-- Sign-up Form -->
-        <h2 class="h2 mb-lg-2 d-lg-none">Sign Up to Start Booking your Dream Property</h2>
-        <h4 class="h2 text-center d-none d-lg-block">Sign Up</h4>
-  
-        <form [formGroup]="signUpForm" (ngSubmit)="handleSignUp()" *ngIf="!successFlag">
-          <div class="mb-4">
-            <label for="username" class="form-label">Username</label>
-            <input type="text" class="form-control {{username.pristine ? '' : username.dirty && username.invalid ? 'is-invalid':'is-valid'}}"
-              id="username" placeholder="Enter your username" [formControl]="username">
-            <div class="form-text text-danger" *ngIf="username.dirty && username.invalid">
-              <span *ngIf="username.errors?.['required']">Username can't be empty.</span>
-            </div>
-          </div>
-  
-          <div class="mb-4">
-            <label for="email" class="form-label">Email address</label>
-            <input type="email" class="form-control {{email.pristine ? '' : email.dirty && email.invalid ? 'is-invalid':'is-valid'}}"
-              id="email" aria-describedby="emailHelp" placeholder="Enter your email" [formControl]="email">
-            <div class="form-text text-danger" *ngIf="email.dirty && email.invalid">
-              <span *ngIf="email.errors?.['required']">Email can't be empty.</span>
-            </div>
-          </div>
-  
-          <div class="mb-4">
-            <label for="password" class="form-label">Password</label>
-            <input type="password" class="form-control {{password.pristine ? '' : password.dirty && password.invalid ? 'is-invalid':'is-valid'}}"
-              id="password" placeholder="Enter your password" [formControl]="password">
-            <div class="form-text text-danger" *ngIf="password.dirty && password.invalid">
-              <span *ngIf="password.errors?.['required']">Password can't be empty.</span>
-            </div>
-          </div>
-  
-          <button type="submit" [disabled]="signUpForm.pristine || (signUpForm.dirty && signUpForm.invalid)" class="btn btn-primary w-100">
-            Sign Up
-          </button>
-        </form>
-  
-        <h6 class="h6 pb-1 mb-lg-4 d-lg-none text-center">Have an account? <a href="../signin" class="link">Log in</a></h6>
+
+      <!-- Success Message -->
+      <div class="alert alert-success d-flex align-items-center mt-4" role="alert" *ngIf="successFlag">
+        <i class="bi bi-check-circle" style="color: #016450;"></i>
+        <div class="ms-2">Registration successful! Redirecting to the login page...</div>
       </div>
+
+      <!-- Sign-up Form -->
+      <h2 class="h2 mb-lg-2 d-lg-none">Sign Up to Start Booking your Dream Property</h2>
+      <h4 class="h2 text-center d-none d-lg-block">Sign Up</h4>
+
+      <form [formGroup]="signUpForm" (ngSubmit)="handleSignUp()" *ngIf="!successFlag">
+
+
+        
+        <div class="mb-4">
+          <label for="username" class="form-label">Username</label>
+          <input type="text" class="form-control {{username.pristine ? '' : username.dirty && username.invalid ? 'is-invalid':'is-valid'}}"
+            id="username" placeholder="Enter your username" [formControl]="username">
+          <div class="form-text text-danger" *ngIf="username.dirty && username.invalid">
+            <span *ngIf="username.errors?.['required']">Username can't be empty.</span>
+          </div>
+        </div>
+
+        <div class="mb-4">
+          <label for="email" class="form-label">Email address</label>
+          <input type="email" class="form-control {{email.pristine ? '' : email.dirty && email.invalid ? 'is-invalid':'is-valid'}}"
+            id="email" aria-describedby="emailHelp" placeholder="Enter your email" [formControl]="email">
+          <div class="form-text text-danger" *ngIf="email.dirty && email.invalid">
+            <span *ngIf="email.errors?.['required']">Email can't be empty.</span>
+            <span *ngIf="email.errors?.['invalidEmail']">Please enter a valid email address</span>
+          </div>
+        </div>
+
+        <div class="mb-4">
+          <label for="password" class="form-label">Password</label>
+          <input type="password" class="form-control {{password.pristine ? '' : password.dirty && password.invalid ? 'is-invalid':'is-valid'}}"
+            id="password" placeholder="Enter your password" [formControl]="password">
+          <div class="form-text text-danger" *ngIf="password.dirty && password.invalid">
+            <span *ngIf="password.errors?.['required']">Password can't be empty.</span>
+            <span *ngIf="password.errors?.['invalidPassword']">Password must be at least 8 characters long, and include at least one uppercase letter, one lowercase letter, one number, and one special character.</span>
+          </div>
+        </div>
+
+        <button type="submit" [disabled]="signUpForm.pristine || (signUpForm.dirty && signUpForm.invalid)" class="btn btn-primary w-100">
+          Sign Up
+        </button>
+      </form>
+
+      <h6 class="h6 pb-1 mb-lg-4 d-lg-none text-center">Have an account? <a href="../signin" class="link">Log in</a></h6>
     </div>
   </div>
+</div>
+
   
