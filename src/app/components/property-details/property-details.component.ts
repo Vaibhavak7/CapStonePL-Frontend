@@ -32,6 +32,7 @@ export class PropertyDetailsComponent implements OnInit {
   guestOptions: number[] = [];
   totalPrice: string = '₹0';
   minDate: string;
+  
 
   constructor(
     private route: ActivatedRoute,
@@ -108,17 +109,28 @@ export class PropertyDetailsComponent implements OnInit {
     return Math.ceil(diffTime / (1000 * 60 * 60 * 24));
   }
 
-  onReserveClick() {
-    if (!this.checkInDate || !this.checkOutDate) {
-      Swal.fire({
-        icon: 'warning',
-        title: 'Dates missing',
-        text: 'Please select both check-in and check-out dates.',
-      });
-    } else {
-      this.reserve(); // Call the reserve function if both dates are selected
+    onReserveClick() {
+      console.log("INNNNNN")
+      if (!this.checkInDate) {
+        // Check if no check-in date is selected
+        Swal.fire({
+          icon: 'warning',
+          title: 'Check-in Date Missing',
+          text: 'Please select a check-in date.',
+        });
+      } else if (!this.checkOutDate) {
+        // Check if only check-in is selected but no check-out date
+        Swal.fire({
+          icon: 'warning',
+          title: 'Check-out Date Missing',
+          text: 'Please select a check-out date.',
+        });
+      } else {
+        // If both dates are selected, proceed to reserve
+        this.reserve();
+      }
     }
-  }
+    
 
   reserve() {
     const userId = this.auth.getUserDetails().userId;

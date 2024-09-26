@@ -208,3 +208,14 @@
   background-color: #016450; /* Green background when hovering over options */
   color: white; /* White text color on hover */
 }
+.no-properties {
+  text-align: center; /* Center the text */
+  font-size: 24px; /* Increase font size */
+  color: white; /* Text color */
+  color: #016450; /* Background color */
+  padding: 20px; /* Add some padding */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow */
+  margin: 20px 0; /* Margin for spacing */
+  margin-top: 80px
+}

@@ -275,7 +275,7 @@
                     <!-- Button shown if user is logged in -->
                     <button class="reserve-button" *ngIf="auth.isLoggedIn" 
                             (click)="onReserveClick()" 
-                            [disabled]="!checkInDate || !checkOutDate">
+                            >
                       <span class="reserve-text">Reserve</span>
                     </button>
                     <button class="reserve-button" *ngIf="!auth.isLoggedIn" 
