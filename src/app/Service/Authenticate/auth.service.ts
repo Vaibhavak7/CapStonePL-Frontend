@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, BehaviorSubject, throwError, of } from 'rxjs';
-import { map, catchError } from 'rxjs/operators';
+import { map, catchError, tap } from 'rxjs/operators';
 import { UserCredentials } from 'src/app/components/models/User';
 import { UserDetails } from 'src/app/components/models/UserDetails';
 
@@ -30,6 +30,7 @@ export class AuthService {
   loginUser(user: UserCredentials): Observable<any> {
     return this.http.post<any>("http://localhost:8080/api/users/login", user).pipe(
       map(response => {
+        console.log('API Response:', response);
         if (response && response.token) {
           this.userDetails = {
             userName: response.userName,
@@ -44,7 +45,7 @@ export class AuthService {
           this.isLoggedIn = true;
           this.loginStatusSubject.next(true);
 
-          const storedUser: any = { ...response, password: user.password };
+          const storedUser: any = { ...response, password: "user.password" };
           localStorage.setItem('currentUser', JSON.stringify(storedUser));
 
           console.log('User details set:', response); // Debug log
@@ -92,6 +93,8 @@ export class AuthService {
     const token = localStorage.getItem('jwt');
     const currentUser = localStorage.getItem('currentUser');
 
+    console.log(currentUser)
+
     if (currentUser) {
       const userId = JSON.parse(currentUser).userId;
 
@@ -115,7 +118,7 @@ export class AuthService {
               return true; // Token is valid
             }),
             catchError(error => {
-              console.error('Error fetching user:', this.userDetails);
+              console.error('Error fetching user:', error); // Log the error response
               this.logout(); // Logout if there's an error
               return of(false); // Token is not valid
             })
@@ -148,13 +151,21 @@ export class AuthService {
     return this.http.put<any>(`http://localhost:8080/api/users/${userId}`, updateData);
   }
   
-  canActivate(): Promise<boolean> {
-    return this.checkTokenValidity().toPromise().then(isValid => {
-      if (isValid) {
-        this.router.navigate(['/']);
-        return false;
-      }
-      return true;
-    });
+  canActivate(): Observable<boolean> {
+
+    return this.checkTokenValidity().pipe(
+      tap(isValid => {
+        if (isValid) {
+          // this.router.navigate(['/']);
+          console.log("Route valid",isValid)
+          return of(true); 
+        } else {
+          console.log("Route not valid ",isValid)
+          this.router.navigate(['/'])
+          return of(false); 
+        }
+      })
+    );
+
   }
 }

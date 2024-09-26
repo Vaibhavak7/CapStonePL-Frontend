@@ -146,3 +146,6 @@ body {
 .navbar-light .navbar-toggler-icon {
   background-image: url("data:image/svg+xml,...");
 }
+.pointer {
+  cursor: pointer; /* Change cursor to pointer */
+}

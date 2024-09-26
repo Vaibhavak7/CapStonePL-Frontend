@@ -90,7 +90,7 @@ export class SearchbarComponent implements OnInit {
   updatePriceRange(event: Event): void {
     const inputElement = event.target as HTMLSelectElement;
     this.selectedPriceRange = inputElement.value;
-    console.log('Selected Price Range:', this.selectedPriceRange);
+    console.log('Selected Price Range:', this.selectedPriceRange); 
     this.clearOtherSelections('priceRange');
     this.prop.properties=this.properties;
     // Now filter the properties based on the selected price range

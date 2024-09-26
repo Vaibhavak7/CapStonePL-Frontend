@@ -19,14 +19,17 @@
             <p class="card-text">Property ID: {{ booking.property.propertyId }}</p>
 
             <!-- Call to Action Buttons -->
-            <button type="button" routerLink="/property/{{booking.property.propertyId}}" class="btn blcolor my-3 me-3 px-4 py-3 shadow-lg" aria-current="page">
+            <button type="button" routerLink="/property/{{booking.property.propertyId}}"
+              class="btn blcolor my-3 me-3 px-4 py-3 shadow-lg" aria-current="page">
               Book Again
               <span><img src="../../../assets/rightarrow.png" alt="arrow" class="img-fluid" style="height: 20px"></span>
             </button>
             <!-- Review Button -->
-            <button type="button" class="btn blcolor my-3 mx-5 px-4 py-3 shadow-lg" (click)="openReviewModal(booking.property.propertyId)">
+            <button type="button" class="btn blcolor my-3 mx-5 px-4 py-3 shadow-lg"
+              (click)="openReviewModal(booking.property.propertyId)">
               Review Property
-              <span><img src="../../../assets/rightarrow.png" alt="review" class="img-fluid" style="height: 20px"></span>
+              <span><img src="../../../assets/rightarrow.png" alt="review" class="img-fluid"
+                  style="height: 20px"></span>
             </button>
           </div>
         </div>
@@ -36,7 +39,9 @@
 
   <!-- No Bookings Template -->
   <ng-template #noBookingsTemplate>
-    <p class="text-center no-bookings">No bookings made</p>
+    <div class="no-booking-message">
+      <p>You have no bookmarked properties.</p>
+    </div>
   </ng-template>
 </div>
 
@@ -54,7 +59,7 @@
             <label for="reviewText" class="form-label">Your Review</label>
             <textarea id="reviewText" class="form-control" [(ngModel)]="reviewText" name="reviewText"></textarea>
           </div>
-          
+
           <!-- Star Rating -->
           <p>Selected Rating:</p>
           <div class="star-rating">
@@ -62,7 +67,7 @@
                    'bi-star-fill': index < selectedRating || index < hoveredRating, 
                    'bi-star': index >= selectedRating && index >= hoveredRating
                }" (mouseover)="hoverRating(index + 1)" (mouseleave)="hoveredRating = 0"
-                (click)="selectRating(index + 1)">
+              (click)="selectRating(index + 1)">
             </i>
           </div>
         </form>
@@ -74,4 +79,3 @@
     </div>
   </div>
 </div>
-

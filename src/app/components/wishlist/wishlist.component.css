@@ -122,3 +122,15 @@
         font-size: 12px; /* Smaller font for amenities on mobile */
     }
 }
+.no-bookmarks-message {
+
+    display: flex;              /* Use flexbox for centering */
+    justify-content: center;    /* Center horizontally */
+    align-items: center;        /* Center vertically */
+    height: 37vh;             /* Full viewport height */
+    text-align: center;         /* Center text inside the div */
+    font-size: 24px;           /* Increase font size */
+    font-weight: bold;          /* Make text bold */
+    color: #016450;
+}
+

@@ -4,7 +4,7 @@
     <div *ngIf="bookmarks.length > 0; else noBookmarks">
         <div class="container my-5">
             <div class="row g-5 custom-row-margin">
-                <div class="col-12 col-md-4" *ngFor="let bookmark of bookmarks.slice(0, 9)">
+                <div class="col-12 col-md-4" *ngFor="let bookmark of bookmarks">
                     <div class="card property-card shadow-lg">
                         <img src="https://cdn.sanity.io/images/ocl5w36p/production/d0b9849ac7fb4174cc9a55956f7c2740a818ad8b-1401x1120.png?w=768&auto=format&dpr=2"
                              class="card-img-top px-2 pt-2" 
@@ -19,10 +19,16 @@
                                     {{bookmark.property.area + " ," + bookmark.property.city}}
                                 </h6>
                                 <h4 class="pt-3 pb-4 cardAminity">₹{{bookmark.property.rent}}</h4>
+                                <div>
                                 <button type="button" [routerLink]="['/property', bookmark.property.propertyId]" class="btn blcolor my-3 me-3 px-4 py-3 shadow-lg" aria-current="page">
-                                    Details
+                                    Book Property
                                     <span><img src="../../../assets/rightarrow.png" alt="arrow" class="img-fluid ms-5" style="height: 20px"></span>
                                 </button>
+                                <button type="button" (click)="removeReview(bookmark.property.propertyId)" class="btn blcolor my-3 me-3 px-4 py-3 shadow-lg">
+                                    Remove Wishlist
+                                    <span><img src="../../../assets/rightarrow.png" alt="arrow" class="img-fluid ms-5" style="height: 20px"></span>
+                                </button>
+                            </div>
                             </div>
                             <div class="ms-3 me-4">
                                 <h5 class="mb-4 mt-3 aminities" style="font-size: 12px;">
@@ -46,11 +52,13 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> 
             </div>
         </div>
     </div>
     <ng-template #noBookmarks>
-        <p>You have no bookmarked properties.</p>
+        <div class="no-bookmarks-message">
+            <p>You have no bookmarked properties.</p>
+        </div>
     </ng-template>
-</div>
+</div> 

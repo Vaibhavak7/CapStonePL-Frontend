@@ -1,38 +1,68 @@
 .container {
-    background-color: #f8f9fa; /* Light background */
-    border-radius: 8px; /* Rounded corners */
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-  }
-  
-  .profile-header {
-    color: #016450; /* Your preferred color */
-  }
-  
-  .profile-info {
-    text-align: left;
-  }
-  
-  .btn {
-    background-color: #016450; /* Consistent button color */
-    color: white;
-  }
-  
-  .btn:hover {
-    background-color: #014c3f; /* Darker shade on hover */
-  }
-  
-  .modal-header {
-    background-color: #016450; /* Modal header color */
-    color: white;
-  }
-  
-  .modal-footer {
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  .form-label {
-    color: #016450; /* Consistent label color */
-  }
-  
+  background-color: #f8f9fa; /* Light background */
+  border-radius: 8px; /* Rounded corners */
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.profile-header {
+  color: #016450; /* Your preferred color */
+}
+
+.profile-info {
+  text-align: left;
+}
+
+.profile-picture {
+  width: 120px; /* Adjust size as needed */
+  height: 120px; /* Adjust size as needed */
+  border-radius: 50%; /* Circular image */
+  border: 2px solid #016450; /* Border color */
+}
+
+.btn {
+  background-color: #016450; /* Consistent button color */
+  color: white;
+}
+
+.btn:hover {
+  background-color: #014c3f; /* Darker shade on hover */
+}
+
+.modal-header {
+  background-color: #016450; /* Modal header color */
+  color: white;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.form-label {
+  color: #016450; /* Consistent label color */
+}
+
+.new-property-message {
+  text-align: center;
+  color: #333; /* Change color as needed */
+  border: 1px solid #ccc; /* Border for the facts container */
+  border-radius: 10px; /* Rounded corners */
+  padding: 20px; /* Padding around content */
+  margin: 20px auto; /* Centering */
+  max-width: 600px; /* Maximum width */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* More pronounced shadow */
+  position: relative; /* For positioning icons */
+}
+
+.fact-container {
+  display: flex;
+  align-items: center; /* Center items vertically */
+  justify-content: center; /* Center items horizontally */
+}
+
+.fact-icon {
+  font-size: 24px; /* Size of the icons */
+  margin: 0 15px; /* Margin around icons */
+  color: #016450; /* Icon color */
+}

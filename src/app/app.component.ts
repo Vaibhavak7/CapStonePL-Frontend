@@ -29,25 +29,25 @@ export class AppComponent {
           console.log(isTokenValid)
       }
 
-      this.propertylist.getPropertiesAll().subscribe({
-        next: (properties: PropertyDTO[]) => {
-          this.propertylist.properties = properties; 
-          this.propertylist.cities = Array.from(new Set(this.propertylist.properties.map(property => property.city)));
-          properties.forEach(property => {
-            this.propertylist.fetchAverageRating(property.propertyId).subscribe({
-              next: (avgRating: number) => {
-                property.avgRating = avgRating; // Assign the average rating
-              },
-              error: (error) => {
-                console.error(`Error fetching average rating for property ID ${property.propertyId}:`, error);
-              }
-            });
-          });
-        },
-        error: (error) => {
-          console.error('Error fetching properties:', error);
-        }
-      });
+      // this.propertylist.getPropertiesAll().subscribe({
+      //   next: (properties: PropertyDTO[]) => {
+      //     this.propertylist.properties = properties; 
+      //     this.propertylist.cities = Array.from(new Set(this.propertylist.properties.map(property => property.city)));
+      //     properties.forEach(property => {
+      //       this.propertylist.fetchAverageRating(property.propertyId).subscribe({
+      //         next: (avgRating: number) => {
+      //           property.avgRating = avgRating; // Assign the average rating
+      //         },
+      //         error: (error) => {
+      //           console.error(`Error fetching average rating for property ID ${property.propertyId}:`, error);
+      //         }
+      //       });
+      //     });
+      //   },
+      //   error: (error) => {
+      //     console.error('Error fetching properties:', error);
+      //   }
+      // });
   });
 
     // this.authService.getUserDetails().userId

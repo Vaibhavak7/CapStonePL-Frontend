@@ -18,6 +18,7 @@ export class BookingService {
   }
 
  createReservation(bookingData: BookingDate): Observable<HttpResponse<any>> {
+  
   return this.http.post<any>(this.apiUrl, bookingData, {
     observe: 'response',
     responseType: 'json' // Or use 'text' if the response isn't JSON

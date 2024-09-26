@@ -71,7 +71,7 @@ export class BookingsComponent {
       next: (response) => {
  
         if (response.status === 201) {
-          Swal.fire({
+          Swal.fire({ 
             icon: 'success',
             title: 'Feedback submitted!',
             text: 'Your feedback has been successfully submitted.',

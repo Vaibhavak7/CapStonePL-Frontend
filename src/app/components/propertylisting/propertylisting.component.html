@@ -1,106 +1,97 @@
-<app-searchbar></app-searchbar>
-<!-- HeroBox (Featured properties) Start -->
-<!-- <div id="feat-box" class="container my-5">
-    <div class="row g-3 justify-content-start mb-5">
-        <div id="feat-head" class="col-8 col-md-6 col-lg-5">
-            <p class="heading-big pt-3 px-5">FEATURED</p>
+<!-- <app-searchbar></app-searchbar> -->
+
+<!-- <div class="container my-5">
+    <form (ngSubmit)="onSubmit()">
+      <div class="searchInput" [ngClass]="{'active': isActive}">
+        <input type="text" [(ngModel)]="cityData" (keyup)="onKeyUp('city')" name="cityInput" placeholder="City..." autocomplete="off">
+        <div class="resultBox" *ngIf="isActive">
+          <ul>
+            <li *ngFor="let suggestion of filteredSuggestions" (click)="selectSuggestion(suggestion)">
+              {{ suggestion }}
+            </li>
+          </ul>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-12">
-            <div class="card border-0 shadow-lg mb-3">
-                <div class="row justify-content-between border-0 g-3 me-2">
-                    <div class="col-md-4 align-self-center">
-                        <img src="{{propertylist.}"
-                            class="img-fluid rounded-start ms-2 h-100" alt="img">
+        <div class="icon">
+          <i class="bi bi-search" (click)="onSubmit()"></i>
+        </div>
+      </div> 
+    -->
+      <!-- <div class="filters">
+        Price Range Dropdown -->
+        <!-- <select [(ngModel)]="selectedPriceRange" name="priceRange" (change)="updatePriceRange($event)">
+          <option value="">Select Price Range</option>
+          <option *ngFor="let range of priceRanges" [value]="range">{{ range }}</option>
+        </select> -->
+  
+        <!-- Sort By Price Dropdown -->
+        <!-- <select [(ngModel)]="selectedSortBy" name="sortByPrice" (change)="updateSortBy($event)">
+          <option value="">Sort By Price</option>
+          <option *ngFor="let option of sortOptions" [value]="option">{{ option }}</option>
+        </select> -->
+  
+        <!-- Sort By Rating Dropdown -->
+        <!-- <select [(ngModel)]="selectedRatingSortBy" name="sortByRating" (change)="updateRatingSort($event)">
+          <option value="">Sort By Rating</option>
+          <option *ngFor="let option of ratingSortOptions" [value]="option">{{ option }}</option>
+        </select> -->
+  
+        <!-- Features Dropdown -->
+        <!-- <select [(ngModel)]="selectedFeatures" name="features" (change)="updateFeatures($event)">
+          <option value="">Select Features</option>
+          <option *ngFor="let feature of features" [value]="feature">{{ feature }}</option>
+        </select>
+      </div>
+    </form>
+  </div> -->
+  
+<!-- Cards -->
+<!-- <div class="container my-5">
+    <div class="row g-5 custom-row-margin">
+        <div class="col-12 col-md-4" *ngFor="let property of this.propertylist.properties | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage }">
+            <div class="card property-card shadow-lg">
+                <img src="https://cdn.sanity.io/images/ocl5w36p/production/d0b9849ac7fb4174cc9a55956f7c2740a818ad8b-1401x1120.png?w=768&auto=format&dpr=2"
+                    class="card-img-top px-2 pt-2" alt="buildingimg" />
+                <div class="card-body d-flex justify-content-between">
+                    <div class="px-2 pt-1">
+                        <a class="cardAminity" routerLink="/property/{{property.propertyId}}">
+                            <h5 class="card-title">{{property.propertyName}}</h5>
+                        </a>
+                        <h6 class="mt-3 featuredes" style="font-size: 14px;">
+                            <span><img src="../../../assets/Rounded.png" alt="arrow" class="img-fluid me-2"
+                                    style="height: 20px;"></span>
+                            {{property.area + " ," + property.city}}
+                        </h6>
+                        <h4 class="pt-3 pb-4 cardAminity">₹{{property.rent}}</h4>
+                        <button type="button" routerLink="/property/{{property.propertyId}}"
+                            class="btn blcolor my-3 me-3 px-4 py-3 shadow-lg" aria-current="page">
+                            Details
+                            <span><img src="../../../assets/rightarrow.png" alt="arrow" class="img-fluid ms-5"
+                                    style="height: 20px"></span>
+                        </button>
                     </div>
-                    <div class="col-md-8">
-                        <div class="card-body mb-2">
-                            <div class="row justify-content-between">
-
-                                <div class="col-8">
-                                    <a class="prop-name" routerLink="/property/{{propertylist.properties[0].id}}">
-                                        <h5 class="card-title">{{propertylist.properties[0].name}}</h5>
-                                    </a>
-                                    <h6 class="mt-3" style="font-size: 14px;"><span><img src="../../assets/Rounded.png"
-                                                alt="arrow"
-                                                class="img-fluid"></span>{{propertylist.properties[0].address.line1 + " "
-                                        + propertylist.properties[0].address.line2}}
-                                    </h6>
-                                    <p class="mt-4 card-price">{{propertylist.properties[0].price}}</p>
-
-                                    <div class="row justify-content-between mt-5">
-                                        <div class="col-6 aminities">
-                                            <div class="mb-5">
-                                                <span class="me-2">
-                                                    <img src="../../assets/newimglisting/Icon awesome-shower.png"
-                                                        alt="arrow" class="img-fluid"
-                                                        style="height: 25px" /></span>Finished Baths
-                                            </div>
-                                            <div class="mb-5">
-                                                <span class="me-2">
-                                                    <img src="../../assets/newimglisting/Icon ionic-ios-bed.png"
-                                                        alt="arrow" class="img-fluid"
-                                                        style="height: 25px" /></span>Bedrooms
-                                            </div>
-                                            <div>
-                                                <span class="me-2">
-                                                    <img src="../../assets/newimglisting/Icon ionic-md-tv.png"
-                                                        alt="arrow" class="img-fluid"
-                                                        style="height: 25px" /></span>Luxuries Livings
-                                            </div>
-                                        </div>
-                                        <div class="col-6 aminities">
-                                            <div class="mb-5">
-                                                <span class="me-2">
-                                                    <img src="../../assets/newimglisting/Icon awesome-parking.png"
-                                                        alt="arrow" class="img-fluid"
-                                                        style="height: 25px" /></span>Parking Space
-                                            </div>
-                                            <div class="mb-5">
-                                                <span class="me-2">
-                                                    <img src="../../assets/newimglisting/Icon map-park.png" alt="arrow"
-                                                        class="img-fluid" style="height: 25px" /></span>Play Area
-                                            </div>
-                                            <div>
-                                                <span class="me-2">
-                                                    <img src="../../assets/newimglisting/Icon map-tennis.png"
-                                                        alt="arrow" class="img-fluid"
-                                                        style="height: 25px" /></span>Tennis Court
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-4 position-relative">
-                                    <div class="row ">
-                                        <div class="col-12 w-100 ">
-                                            <span class="mx-2"
-                                                *ngFor="let star of stars.slice(0,propertylist.properties[0].avgRating), let i=index"
-                                                [class]="star"></span>
-                                        </div>
-                                        <div class="col-12 w-100 position-absolute bottom-0">
-                                            <button type="button" routerLink="/wishlist/{{auth.getUserDetails().userId}}"
-                                                class="btn btn-lgrey shadow-lg mb-3 w-100" aria-current="page">
-                                                WISHLIST
-                                                <span class="material-icons">
-                                                    favorite_border
-                                                </span>
-                                            </button>
-                                            <button type="button" routerLink="/bookings/{{auth.getUserDetails().userId}}"
-                                                class="btn btn-green
-                                                shadow-lg w-100" aria-current="page">
-                                                BUY NOW
-                                                <span class="material-icons">
-                                                    navigate_next
-                                                </span> 
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
+                    <div class="ms-3 me-4">
+                        <h5 class="mb-4 mt-3 aminities" style="font-size: 12px;">
+                            <span class="px-1">
+                                <img src="../../../assets/user.png" alt="arrow" class="img-fluid" style="height: 15px">
+                            </span>Guests:{{property.maxGuests}}
+                        </h5>
+                        <h5 class="mb-4 mt-3 aminities" style="font-size: 12px;">
+                            <span class="px-1">
+                                <img src="../../../assets/Icon ionic-ios-bed.png" alt="arrow" class="img-fluid"
+                                    style="height: 15px">
+                            </span>{{property.typeOfProperty}}
+                        </h5>
+                        <h5 class="mb-4 mt-3 aminities" style="font-size: 12px;">
+                            <span class="px-1">
+                                <img src="../../../assets/Icon ionic-md-tv.png" alt="arrow" class="img-fluid"
+                                    style="height: 15px">
+                            </span>Luxurious Living
+                        </h5>
+                        <div>
+                            <span class="mx-auto" *ngFor="let star of getStars(property.avgRating), let i=index"
+                                [class]="star"></span>
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -108,6 +99,61 @@
     </div>
 </div> -->
 
+<!-- Pagination Controls -->
+<!-- <div class="container d-flex justify-content-center mt-3" *ngIf="totalItems > itemsPerPage">
+    <pagination-controls 
+        class="pagination-bg" 
+        (pageChange)="currentPage = $event">
+    </pagination-controls>
+</div> -->
+  
+
+<!-- <app-searchbar></app-searchbar> -->
+
+<div class="container my-5">
+    <form (ngSubmit)="onSubmit()">
+      <div class="searchInput" [ngClass]="{'active': isActive}">
+        <input type="text" [(ngModel)]="cityData" (keyup)="onKeyUp('city')" name="cityInput" placeholder="City..." autocomplete="off">
+        <div class="resultBox" *ngIf="isActive">
+          <ul>
+            <li *ngFor="let suggestion of filteredSuggestions" (click)="selectSuggestion(suggestion)">
+              {{ suggestion }}
+            </li>
+          </ul>
+        </div>
+        <div class="icon">
+          <i class="bi bi-search" (click)="onSubmit()"></i>
+        </div>
+      </div> 
+   
+      <div class="filters">
+        <!-- Price Range Dropdown -->
+        <select [(ngModel)]="selectedPriceRange" name="priceRange" (change)="NupdatePriceRange($event)">
+          <option value="">Select Price Range</option>
+          <option *ngFor="let range of priceRanges" [value]="range">{{ range }}</option>
+        </select>
+  
+        <!-- Sort By Price Dropdown -->
+        <select [(ngModel)]="selectedSortBy" name="sortByPrice" (change)="NupdateSortBy($event)">
+          <option value="">Sort By Price</option>
+          <option *ngFor="let option of sortOptions" [value]="option">{{ option }}</option>
+        </select>
+  
+        <!-- Sort By Rating Dropdown -->
+        <select [(ngModel)]="selectedRatingSortBy" name="sortByRating" (change)="NupdateRatingSort($event)">
+          <option value="">Sort By Rating</option>
+          <option *ngFor="let option of ratingSortOptions" [value]="option">{{ option }}</option>
+        </select>
+  
+        <!-- Features Dropdown -->
+        <select [(ngModel)]="selectedFeatures" name="features" (change)="NupdateFeatures($event)">
+          <option value="">Select Features</option>
+          <option *ngFor="let feature of features" [value]="feature">{{ feature }}</option>
+        </select>
+      </div>
+    </form>
+  </div>
+  
 <!-- Cards -->
 <div class="container my-5">
     <div class="row g-5 custom-row-margin">
@@ -170,4 +216,4 @@
         (pageChange)="currentPage = $event">
     </pagination-controls>
 </div>
- 
+  
