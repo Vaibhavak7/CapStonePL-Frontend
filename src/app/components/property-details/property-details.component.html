@@ -1,5 +1,3 @@
-<!-- Header Start -->
-
 <div class="property-header">
     <h1 class="header-title">
         <span class="header-property-name">{{ property?.propertyName }}</span>
@@ -16,70 +14,20 @@
                 <i [class]="star"></i>
             </span>
         </div>
-        <!-- Wishlist Icon -->
-        <button class="wishlist-button" (click)="toggleWishlist()"  *ngIf="auth.isLoggedIn">
+        <button class="wishlist-button" (click)="toggleWishlist()" *ngIf="auth.isLoggedIn">
             <span class="wishlist-icon">
                 <i class="bi bi-heart" [ngClass]="{'active': isWished}"></i>
             </span>
         </button>
-    </div> 
+    </div>
 </div>
 
-
-
-<!-- Header end  -->
-<!-- pROPERTY SCROLLER START  -->
-<!-- <div id="carouselExampleFade" class="carousel slide carousel-fade custom-carousel">
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img src="https://cdn.sanity.io/images/ocl5w36p/production/d0b9849ac7fb4174cc9a55956f7c2740a818ad8b-1401x1120.png?w=768&auto=format&dpr=2" class="d-block w-100" alt="...">
-      </div>
-      <div class="carousel-item">
-        <img src="../../../assets/Shinchan.jpg" class="d-block w-100" alt="...">
-      </div>
-      <div class="carousel-item">
-        <img src="../../../assets/photoBuilding.png" class="d-block w-100" alt="...">
-      </div>
-    </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
-  </div> -->
-<!-- Images start  -->
 <div class="container my-5">
     <app-slider></app-slider>
 </div>
-<!-- <div class="container mt-5">
-    <div class="row ">
 
-
-        <div class="col-8 rounded ">
-            <img src="https://cdn.sanity.io/images/ocl5w36p/production/d0b9849ac7fb4174cc9a55956f7c2740a818ad8b-1401x1120.png?w=768&auto=format&dpr=2"
-                class="img-fluid h-75 mt-2 " style="border-radius: 10px;" />
-        </div>
-
-        <div class="col-4 shadow-lg rounded border-0">
-            <div class="card border-0">
-                <img src="../../../assets/wishlistbuilding1.png" class="img-fluid my-3" />
-            </div>
-            <div class="card border-0">
-                <img src="../../../assets/wishlistbuilding2.png" class="img-fluid mb-3" />
-            </div>
-
-
-        </div>
-    </div>
-</div> -->
 <hr />
 
-<!-- Images End  -->
-
-<!-- Body Text Start -->
 
 <div class="container">
     <div class="row mt-4">
@@ -92,7 +40,7 @@
                     </span>
                 </div>
             </div>
-            
+
         </div>
 
         <div class="col-12 mt-4 d-flex justify-content-center amenities-container">
@@ -140,13 +88,6 @@
     </div>
 </div>
 
-
-<!-- new -->
-
-
-<!-- end  -->
-
-<!-- Property details start  -->
 <hr />
 <div class="property-layout">
     <div class="property-info">
@@ -184,57 +125,6 @@
         </div>
     </div>
 
-    <!-- <div class="booking-sidebar">
-        <div class="sidebar-content">
-            <div class="pricing-section">
-                <div class="pricing-details">
-                    <div class="price-info">
-                        <span class="price">₹20,011</span>
-                        <span class="discounted-price">₹12,006</span>
-                        <span class="price-per-night">night</span>
-                    </div>
-                </div>
-                <div class="dates-selector">
-                    <button class="change-dates">
-                        <div class="check-in">
-                            <div class="label">Check-in</div>
-                            <div class="date">10/3/2024</div>
-                        </div>
-                        <div class="check-out">
-                            <div class="label">Checkout</div>
-                            <div class="date">10/8/2024</div>
-                        </div>
-                    </button>
-                </div>
-                <div class="guests-selector">
-                    <button class="guests-button">
-                        <div class="label">Guests</div>
-                        <div class="guests-count">1 guest</div>
-                    </button>
-                </div>
-                <div class="reserve-section">
-                    <button class="reserve-button">
-                        <span class="reserve-text">Reserve</span>
-                    </button>
-                </div>
-                <div class="pricing-summary">
-                    <div class="nightly-rate">
-                        <span class="rate-description">₹20,011 x 5 nights</span>
-                        <span class="total-price">₹1,00,054</span>
-                    </div>
-                    <div class="discount">
-                        <span class="discount-description">Long stay discount</span>
-                        <span class="discount-amount">-₹40,022</span>
-                    </div>
-                    <div class="total-before-taxes">
-                        <span class="total-description">Total before taxes</span>
-                        <span class="total-amount">₹... (Add the exact amount)</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> -->
-
 
     <div class="booking-sidebar">
         <div class="sidebar-content">
@@ -248,23 +138,19 @@
                 <div class="dates-selector">
                     <label class="check-in">
                         <div class="label">Check-in</div>
-                        <input type="date" 
-                               [(ngModel)]="checkInDate" 
-                               (ngModelChange)="onCheckInDateChange($event)" 
-                               [min]="minDate" />
+                        <input type="date" [(ngModel)]="checkInDate" (ngModelChange)="onCheckInDateChange($event)"
+                            [min]="minDate" />
                         <div class="selected-date">Selected: {{ checkInDate | date: 'dd-MM-yyyy' }}</div>
                     </label>
                     <label class="check-out">
                         <div class="label">Check-out</div>
-                        <input type="date" 
-                               [(ngModel)]="checkOutDate" 
-                               (ngModelChange)="onCheckOutDateChange($event)" 
-                               [min]="checkInDate ? addDays(checkInDate, 1) : minDate" />
+                        <input type="date" [(ngModel)]="checkOutDate" (ngModelChange)="onCheckOutDateChange($event)"
+                            [min]="checkInDate ? addDays(checkInDate, 1) : minDate" />
                         <div class="selected-date">Selected: {{ checkOutDate | date: 'dd-MM-yyyy' }}</div>
                     </label>
-                    
 
-                </div> 
+
+                </div>
                 <div class="guests-selector">
                     <label class="guests-label">Guests: </label>
                     <select [(ngModel)]="guestsCount">
@@ -272,25 +158,16 @@
                     </select>
                 </div>
                 <div class="reserve-section">
-                    <!-- Button shown if user is logged in -->
-                    <button class="reserve-button" *ngIf="auth.isLoggedIn" 
-                            (click)="onReserveClick()" 
-                            >
-                      <span class="reserve-text">Reserve</span>
+
+                    <button class="reserve-button" *ngIf="auth.isLoggedIn" (click)="onReserveClick()">
+                        <span class="reserve-text">Reserve</span>
                     </button>
-                    <button class="reserve-button" *ngIf="!auth.isLoggedIn" 
-                    [routerLink]="['/signin']"  >
-                      <span class="reserve-text">Please Login</span>
+                    <button class="reserve-button" *ngIf="!auth.isLoggedIn" [routerLink]="['/signin']">
+                        <span class="reserve-text">Please Login</span>
                     </button>
-                  
-                    <!-- Button shown if user is NOT logged in -->
-                    <!-- <button class="login-button" *ngIf="!auth.isLoggedIn" 
-                            [routerLink]="['/sign-in']">
-                      <span class="login-text">Please Login</span>
-                    </button> -->
-                  </div>
-                  
-                  
+                </div>
+
+
                 <div class="pricing-summary">
                     <div class="nightly-rate">
                         <span class="rate-description">Details: </span>
@@ -309,34 +186,6 @@
 
 </div>
 
-
-<!-- Property Details End  -->
-
-<!-- Review cards Start-->
-<!-- <div class="container mb-5">
-        <h2 class="des0 text-center mb-5">REVIEWS</h2>
-        <div class="row g-3 justify-content-around">
-            <div class="col-md-4" *ngFor="let review of reviews, let i=index">
-                <div id="review-card" class="card border-0 mb-5 shadow-lg">
-                    <div class="row g-0">
-                        <div class="col-4">
-                            <img src="../../assets/man.png" class="img-fluid h-100 p-2 rounded-start" alt="...">
-                        </div>
-                        <div class="col-8">
-                            <div class="card-body">
-                                <img src="https://raw.githubusercontent.com/parithoshpoojary/property-listing/resources/Resources%20-%20Main/Images/stars.png"
-                                    alt="stars" class="w-75 mb-3">
-                                
-                                <p class="card-text cont-med">{{review.comment}}</p>
-                                <p class="card-text cont-name"><small>Reviewed at {{i+2}} dec</small>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> -->
 <hr />
 <h1 class="review-heading">Reviews ({{ reviews.length }})</h1>
 <div class="mx-auto">
@@ -345,49 +194,15 @@
             <div *ngFor="let review of displayedReviews" class="review-slide">
                 <img src="../../../assets/heroimg.png" alt="{{review.feedbackId}}" class="review-image">
                 <p class="review-text">{{ review.comment }}</p>
-                    <span class="header-review-stars" *ngFor="let star of getStars(review.rating)">
-                        <i [class]="star"></i>
-                    </span>
+                <span class="header-review-stars" *ngFor="let star of getStars(review.rating)">
+                    <i [class]="star"></i>
+                </span>
                 <h3 class="review-author">{{ review.user.userName }}</h3>
                 <p class="review-position">{{ review.postedDate }}</p>
             </div>
         </div>
 
-        <!-- Navigation Arrows -->
         <button (click)="previousSlide()" class="prev-slide">❮</button>
         <button (click)="nextSlide()" class="next-slide">❯</button>
     </div>
 </div>
-
-
-
-
-
-<!-- Review cards End-->
-
-<!-- Review Form Start -->
-<!-- <div class="container my-5">
-        <div class="card border-0 shadow-lg mx-5" style="border-radius: 15px;">
-            <h5 class="text-center mt-4">REVIEW</h5>
-            <form (ngSubmit)="userReview(reviewForm)" #reviewForm="ngForm">
-                <div class="my-4 mx-5">
-                    <label for="exampleInputEmail1" class="form-label"></label>
-                    <input type="text" name="userName" ngModel class="form-control py-3 review-des border-0"
-                        id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="USERNAME">
-                </div>
-                <img src="https://raw.githubusercontent.com/parithoshpoojary/property-listing/resources/Resources%20-%20Main/Images/stars.png"
-                    alt="stars" class="w-25 mb-2 ms-5">
-                <div class="mb-4 mx-5">
-                    <label for="exampleFormControlTextarea1" class="form-label"></label>
-                    <textarea name="review" ngModel class="form-control review-des border-0"
-                        id="exampleFormControlTextarea1" rows="3" placeholder="REVIEW"></textarea>
-                </div>
-                <a type="button" class="btn blcolor mt-3 mb-5 ms-5 px-4 py-3 shadow-lg" aria-current="page">
-                    SUBMIT
-                    <span><img src="../../assets/rightarrow.png" alt="arrow" class="img-fluid ms-3"
-                            style="height: 20px" /></span>
-                </a>
-            </form>
-        </div>
-    </div> -->
-<!-- Review Form End -->

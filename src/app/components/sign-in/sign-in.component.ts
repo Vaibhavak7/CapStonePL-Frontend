@@ -9,28 +9,27 @@ export function customEmailValidator(): ValidatorFn {
     const email = control.value;
     
     if (!email) {
-      return null; // No validation error
+      return null; 
     }
 
     const atSymbolIndex = email.indexOf('@');
     const dotSymbolIndex = email.lastIndexOf('.');
 
     const isValid =
-      atSymbolIndex > 0 && // @ is not the first character
-      dotSymbolIndex > atSymbolIndex + 1 && // . is after @ and not right after
-      dotSymbolIndex < email.length - 1; // . is not the last character
+      atSymbolIndex > 0 && 
+      dotSymbolIndex > atSymbolIndex + 1 && 
+      dotSymbolIndex < email.length - 1; 
 
-    return isValid ? null : { invalidEmail: true }; // Return error if invalid
+    return isValid ? null : { invalidEmail: true }; 
   };
 }
 
-// Custom password validator
 export function customPasswordValidator(): ValidatorFn {
   return (control: AbstractControl): ValidationErrors | null => {
     const password = control.value;
 
     if (!password) {
-      return null; // No validation error
+      return null; 
     }
 
     const hasUpperCase = /[A-Z]/.test(password);
@@ -41,7 +40,7 @@ export function customPasswordValidator(): ValidatorFn {
 
     const isValid = hasUpperCase && hasLowerCase && hasNumeric && hasSpecialChar && isValidLength;
 
-    return isValid ? null : { invalidPassword: true }; // Return error if invalid
+    return isValid ? null : { invalidPassword: true };
   };
 }
 
@@ -61,10 +60,10 @@ export class SignInComponent {
   
 
   constructor(public authService: AuthService, private router: Router) {
-        // Use custom email validator here
+       
         this.email = new FormControl('', [Validators.required, customEmailValidator()]);
     
-        // Use custom password validator
+        
         this.password = new FormControl('', [Validators.required, customPasswordValidator()]);
     this.success=false;
     this.error=false;
@@ -78,20 +77,19 @@ export class SignInComponent {
     if (this.signInForm.valid) {
       const userCredentials = new UserCredentials(this.email.value, this.password.value);
       
-      // Call the login method
+      
       this.authService.loginUser(userCredentials).subscribe(data=>{
         this.authService.loginStatus$.subscribe(isLoggedIn => {
         if (isLoggedIn) {
-          console.log('User logged in successfully');
+          
           localStorage.setItem("jwt",this.authService.getUserDetails().jwt);
-          this.router.navigate(['/']);  // Redirect after successful login
+          this.router.navigate(['/']);  
         } else {
           console.error('Login failed');
         }
       });
       });
 
-      // Subscribe to the login status observable
       
     }
   }

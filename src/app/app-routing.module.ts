@@ -58,6 +58,12 @@ const routes: Routes = [
     path: 'booking',
     component: BookingsComponent,
     canActivate:[guard]
+  },
+  {
+    path: '**',
+    redirectTo:"/",
+   pathMatch:"full"
+
   }
 ];
 

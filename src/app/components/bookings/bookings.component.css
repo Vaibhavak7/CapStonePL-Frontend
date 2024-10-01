@@ -1,4 +1,4 @@
-/* Heading styling */
+
 .booking-header {
     font-size: 2.5rem;
     font-weight: bold;
@@ -8,7 +8,6 @@
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
 }
 
-/* No bookings text styling */
 .no-bookings {
     font-size: 1.5rem;
     color: #555;
@@ -16,12 +15,11 @@
     margin-top: 20px;
 }
 
-/* Flexbox for property info in a horizontal line */
 .property-info {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 10px; /* Reduced margin for better spacing */
+    margin-bottom: 10px; 
 }
 
 .property-info h5 {
@@ -30,7 +28,6 @@
     color: #016450;
 }
 
-/* Card styling */
 .card {
     background-color: #ffffff;
     border-radius: 10px;
@@ -40,7 +37,6 @@
     padding: 20px;
 }
 
-/* Button styling */
 .btn.blcolor {
     background-color: #016450;
     color: white;
@@ -52,13 +48,11 @@
     background-color: #014737;
 }
 
-/* Button icon */
 .btn img {
     margin-left: 10px;
     height: 20px;
 }
 
-/* Make 2 cards in a row */
 @media (min-width: 576px) {
     .row {
         display: flex;
@@ -71,10 +65,9 @@
     }
 }
 
-/* Responsive adjustments */
 @media (max-width: 768px) {
     .property-info {
-        flex-direction: column; /* Stack elements vertically */
+        flex-direction: column; 
         align-items: flex-start;
     }
 
@@ -88,10 +81,9 @@
     }
 }
 
-/* Popup form styling (consistent with booking cards) */
 .modal {
-    display: block; /* Show modal */
-    background-color: rgba(0, 0, 0, 0.5); /* Dim background */
+    display: block; 
+    background-color: rgba(0, 0, 0, 0.5); 
     position: fixed;
     top: 0;
     left: 0;
@@ -216,12 +208,12 @@
 }
 .no-booking-message {
 
-    display: flex;              /* Use flexbox for centering */
-    justify-content: center;    /* Center horizontally */
-    align-items: center;        /* Center vertically */
-    height: 37vh;             /* Full viewport height */
-    text-align: center;         /* Center text inside the div */
-    font-size: 24px;           /* Increase font size */
-    font-weight: bold;          /* Make text bold */
+    display: flex;              
+    justify-content: center;    
+    align-items: center;        
+    height: 37vh;             
+    text-align: center;        
+    font-size: 24px;           
+    font-weight: bold;         
     color: #016450;
 }

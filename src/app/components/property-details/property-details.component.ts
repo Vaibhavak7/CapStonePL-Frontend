@@ -7,7 +7,7 @@ import { ReviewDTO } from '../models/Review';
 import { BookingService } from 'src/app/Service/Booking/booking.service';
 import { BookingDate } from '../models/BookingDate';
 import { BookMark } from '../models/BookMark';
-import Swal from 'sweetalert2'; // Import SweetAlert2
+import Swal from 'sweetalert2'; 
 
 @Component({
   selector: 'app-property-details',
@@ -25,8 +25,8 @@ export class PropertyDetailsComponent implements OnInit {
   originalPrice!: string;
   rent!: number;
   discountedPrice!: string;
-  checkInDate: Date = new Date(); // Default to today
-  checkOutDate: Date | null = null; // No default value for check-out date
+  checkInDate: Date = new Date(); 
+  checkOutDate: Date | null = null; 
   guestsCount: number = 1;
   maxGuests!: number;
   guestOptions: number[] = [];
@@ -40,7 +40,7 @@ export class PropertyDetailsComponent implements OnInit {
     public auth: AuthService,
     private renderer: Renderer2,
     private router: Router,
-    private bookingService: BookingService // Inject the booking service
+    private bookingService: BookingService 
   ) {
     const today = new Date();
     this.minDate = today.toISOString().split('T')[0];
@@ -49,7 +49,7 @@ export class PropertyDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
       this.propertyId = +params.get('propertyId')!;
-      console.log(this.propertyId)
+      
       this.getPropertyDetails();
       this.getPropertyFeedback();
     });
@@ -110,23 +110,21 @@ export class PropertyDetailsComponent implements OnInit {
   }
 
     onReserveClick() {
-      console.log("INNNNNN")
+     
       if (!this.checkInDate) {
-        // Check if no check-in date is selected
         Swal.fire({
           icon: 'warning',
           title: 'Check-in Date Missing',
           text: 'Please select a check-in date.',
         });
       } else if (!this.checkOutDate) {
-        // Check if only check-in is selected but no check-out date
         Swal.fire({
           icon: 'warning',
           title: 'Check-out Date Missing',
           text: 'Please select a check-out date.',
         });
       } else {
-        // If both dates are selected, proceed to reserve
+        
         this.reserve();
       }
     }
@@ -143,7 +141,7 @@ export class PropertyDetailsComponent implements OnInit {
 
     this.bookingService.createReservation(bookingData).subscribe({
       next: (response) => {
-        console.log('Full Response:', response);
+       
         if (response.status === 201 || response.status === 200) {
           Swal.fire({
             icon: 'success',
@@ -192,9 +190,7 @@ export class PropertyDetailsComponent implements OnInit {
         this.maxGuests = data.maxGuests;
         this.updateGuestOptions();
         this.updateTotalPrice();
-        console.log(data);
-
-        // Fetch average rating
+       
         this.fetchAverageRating(this.propertyId);
       },
       error => {
@@ -207,9 +203,9 @@ export class PropertyDetailsComponent implements OnInit {
     this.propertyListService.fetchAverageRating(propertyId).subscribe(
       (avgRating: number) => {
         if (this.property) {
-          this.property.avgRating = avgRating; // Assuming PropertyDTO has avgRating property
+          this.property.avgRating = avgRating; 
         }
-        console.log('Average Rating:', avgRating);
+       
       },
       error => {
         console.error('Error fetching average rating', error);
@@ -250,6 +246,7 @@ export class PropertyDetailsComponent implements OnInit {
   }
 
   updateDisplayedReviews(): void {
+    
     this.displayedReviews = this.reviews.slice(this.currentSlide, this.currentSlide + 3);
     if (this.reviews.length < 3) {
       while (this.displayedReviews.length < 3) {
@@ -259,12 +256,12 @@ export class PropertyDetailsComponent implements OnInit {
   }
 
   nextSlide() {
-    this.currentSlide = (this.currentSlide + 1) % this.reviews.length;
+    this.currentSlide = (this.currentSlide + 3) % this.reviews.length;
     this.updateDisplayedReviews();
   }
 
   previousSlide() {
-    this.currentSlide = (this.currentSlide - 1 + this.reviews.length) % this.reviews.length;
+    this.currentSlide = (this.currentSlide - 3 + this.reviews.length) % this.reviews.length;
     this.updateDisplayedReviews();
   }
 
@@ -287,7 +284,6 @@ export class PropertyDetailsComponent implements OnInit {
 
     this.propertyListService.addToWishlist(bookmarkData).subscribe({
       next: (response) => {
-        console.log('Response:', response);
         if (response.status === 201) {
           this.isWished = true;
           Swal.fire({
@@ -298,7 +294,7 @@ export class PropertyDetailsComponent implements OnInit {
         }
       },
       error: (err) => {
-        console.error('Error adding to wishlist', err);
+      
         if (err.status === 409) {
           Swal.fire({
             icon: 'warning',

@@ -4,34 +4,32 @@ import { Router } from '@angular/router';  // Import Router
 import { User } from '../models/UserCredentials';
 import { AuthService } from 'src/app/Service/Authenticate/auth.service';
 
-// Custom email validator
 export function customEmailValidator(): ValidatorFn {
   return (control: AbstractControl): ValidationErrors | null => {
     const email = control.value;
     
     if (!email) {
-      return null; // No validation error
+      return null; 
     }
 
     const atSymbolIndex = email.indexOf('@');
     const dotSymbolIndex = email.lastIndexOf('.');
 
     const isValid =
-      atSymbolIndex > 0 && // @ is not the first character
-      dotSymbolIndex > atSymbolIndex + 1 && // . is after @ and not right after
-      dotSymbolIndex < email.length - 1; // . is not the last character
+      atSymbolIndex > 0 && 
+      dotSymbolIndex > atSymbolIndex + 1 && 
+      dotSymbolIndex < email.length - 1; 
 
-    return isValid ? null : { invalidEmail: true }; // Return error if invalid
+    return isValid ? null : { invalidEmail: true }; 
   };
 }
 
-// Custom password validator
 export function customPasswordValidator(): ValidatorFn {
   return (control: AbstractControl): ValidationErrors | null => {
     const password = control.value;
 
     if (!password) {
-      return null; // No validation error
+      return null; 
     }
 
     const hasUpperCase = /[A-Z]/.test(password);
@@ -42,7 +40,7 @@ export function customPasswordValidator(): ValidatorFn {
 
     const isValid = hasUpperCase && hasLowerCase && hasNumeric && hasSpecialChar && isValidLength;
 
-    return isValid ? null : { invalidPassword: true }; // Return error if invalid
+    return isValid ? null : { invalidPassword: true }; 
   };
 }
 
@@ -60,13 +58,11 @@ export class SignUpComponent {
   successFlag: boolean;
   errorFlag: boolean;
 
-  constructor(private authService: AuthService, private router: Router) {  // Inject Router
+  constructor(private authService: AuthService, private router: Router) { 
     this.username = new FormControl('', [Validators.required]);
     
-    // Use custom email validator here
     this.email = new FormControl('', [Validators.required, customEmailValidator()]);
     
-    // Use custom password validator
     this.password = new FormControl('', [Validators.required, customPasswordValidator()]);
     
     this.successFlag = false;
@@ -82,17 +78,16 @@ export class SignUpComponent {
   handleSignUp() {
     if (this.signUpForm.valid) {
       const user = new User(this.username.value, this.email.value, this.password.value, "USER");
-      console.log(user);
+     
       this.authService.register(user).subscribe(
         response => {
-          console.log('User registered successfully', response);
+        
           this.successFlag = true;
           this.errorFlag = false;
 
-          // Redirect to login page after 3 seconds
           setTimeout(() => {
             this.router.navigate(['/signin']);
-          }, 3000); // 3 seconds
+          }, 3000); 
         },
         error => {
           console.error('Error registering user', error);

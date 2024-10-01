@@ -1,58 +1,27 @@
 <div class="container my-5 mx-auto">
     <h2 class="text-center profile-header">User Profile</h2>
     
-    <!-- User Profile Picture -->
     <div class="text-center">
         <img src="../../../assets/user.png" alt="Profile Picture" class="profile-picture">
     </div>
 
-    <!-- User Details Block -->
     <div class="profile-info bg-light p-3 rounded shadow-sm">
         <p><strong>Username:</strong> {{ userDetails.userName }}</p>
         <p><strong>Email:</strong> {{ userDetails.email }}</p>
     </div>
 
     <div class="text-center mt-3">
-        <!-- <button type="button" class="btn blcolor" (click)="openUpdateModal()">Update Profile</button> -->
+       
         <button type="button" routerLink="/booking" class="btn blcolor mx-3">View Bookings</button>
         <button type="button" routerLink="/wishlist" class="btn blcolor">View Wishlist</button>
     </div>
 </div>
 
-<!-- Update Profile Modal -->
-<!-- <div class="modal" tabindex="-1" *ngIf="isUpdateModalOpen">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Update Profile</h5>
-                <button type="button" class="btn-close" aria-label="Close" (click)="closeUpdateModal()"></button>
-            </div>
-            <div class="modal-body">
-                <form>
-                    <div class="mb-3">
-                        <label for="username" class="form-label">Username</label>
-                        <input id="username" type="text" class="form-control" [(ngModel)]="updatedUsername" name="username">
-                    </div>
-                    <div class="mb-3">
-                        <label for="password" class="form-label">Password</label>
-                        <input id="password" type="password" class="form-control" [(ngModel)]="updatedPassword" name="password">
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn blcolor" (click)="updateProfile()">Update</button>
-                <button type="button" class="btn btn-secondary" (click)="closeUpdateModal()">Close</button>
-            </div>
-        </div>
-    </div>
-</div> -->
-
-<!-- New Property Message -->
 <div class="new-property-message mt-4">
   <h4>Facts</h4>
   <div class="fact-container">
-      <i class="bi bi-stars">🌟</i> <!-- Replace with actual icons or images -->
+      <i class="bi bi-stars">🌟</i>
       <p *ngIf="newPropertyMessage">{{ newPropertyMessage }}</p>
-      <i class="bi bi-stars">🌟</i> <!-- Replace with actual icons or images -->
+      <i class="bi bi-stars">🌟</i>
   </div>
 </div>

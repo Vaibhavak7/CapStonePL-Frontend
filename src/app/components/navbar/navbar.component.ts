@@ -9,8 +9,8 @@ import { AuthService } from 'src/app/Service/Authenticate/auth.service';
 })
 export class NavbarComponent {
   isMenuActive = false;
-  userName = 'Someone Famous';
-  userRole = 'Website Designer';
+  userName = '';
+  userRole = '';
 
   constructor(public authService: AuthService, private router: Router) {}
 
@@ -22,25 +22,23 @@ export class NavbarComponent {
   onDocumentClick(event: Event): void {
     const clickedInside = (event.target as HTMLElement).closest('.action');
     if (!clickedInside && this.isMenuActive) {
-      this.isMenuActive = false; // Close menu if clicked outside
+      this.isMenuActive = false; 
     }
   }
 
   @HostListener('window:scroll', [])
   onWindowScroll(): void {
     if (this.isMenuActive) {
-      this.isMenuActive = false; // Close menu on scroll
+      this.isMenuActive = false; 
     }
   }
 
   navigateTo(route: string): void {
     this.router.navigate([route]);
-    this.isMenuActive = false; // Close menu after navigation
+    this.isMenuActive = false; 
   }
 
   logout(): void {
-    // Implement your logout logic here
-    // this.authService.logout();
     this.authService.logout();
     this.isMenuActive = false;
     this.router.navigate(['/signin']);

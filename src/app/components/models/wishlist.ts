@@ -1,4 +1,4 @@
-// bookmark.dto.ts
+
 export interface Property {
     propertyName: string;
     city: string;

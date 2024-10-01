@@ -7,7 +7,7 @@ export interface PropertyDTO {
 }
 
 export interface BookMark {
-    bookmarkId: number | null; // Allow null for bookmarkId
+    bookmarkId: number | null; 
     user: UserDTO;
     property: PropertyDTO;
 }

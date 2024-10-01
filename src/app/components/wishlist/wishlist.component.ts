@@ -16,20 +16,20 @@ import Swal from 'sweetalert2';
 export class WishlistComponent {
 
 
-  bookmarks: wishlist[] = []; // Array to hold bookmarks
+  bookmarks: wishlist[] = []; 
   userId!: number
   constructor(public auth: AuthService, private yourService: WishlistService) { }
 
   ngOnInit() {
-    this.userId = this.auth.getUserDetails().userId; // Replace with dynamic user ID as needed
+    this.userId = this.auth.getUserDetails().userId; 
     this.getWishlistProperties(this.userId);
   }
 
   getWishlistProperties(userId: number) {
     this.yourService.getWishlistPropertyById(userId).subscribe(
       (response: any[]) => {
-        this.bookmarks = response; //
-        console.log()
+        this.bookmarks = response.reverse(); 
+    
       },
       error => {
         console.error('Error fetching wishlist properties:', error);
@@ -37,11 +37,11 @@ export class WishlistComponent {
     );
   }
   removeReview(propertyId: number) {
-    console.log(propertyId);
+
     this.yourService.deleteBookmark(this.userId, propertyId).subscribe({
       next: (response) => {
-        console.log(response);
-        if (response.status === 200) {  // Check for successful deletion
+      
+        if (response.status === 200) {
           this.bookmarks = this.bookmarks.filter(bookmark => bookmark.property.propertyId !== propertyId);
           Swal.fire({
             icon: 'success',
@@ -49,12 +49,12 @@ export class WishlistComponent {
             text: 'Your Bookmark has been successfully removed.',
             confirmButtonText: 'OK'
           });
-          // Optionally, refresh your reviews or update the UI as needed
+         
         }
       },
       error: (error) => {
-        if (error.status === 404) {  // Handle bookmark not found
-          console.log("Error: Bookmark not found");
+        if (error.status === 404) {  
+         
           Swal.fire({
             icon: 'warning',
             title: 'Bookmark not found',
@@ -62,7 +62,7 @@ export class WishlistComponent {
             confirmButtonText: 'OK'
           });
         } else {
-          console.error('Error removing review:', error);
+         
           Swal.fire({
             icon: 'error',
             title: 'Failed to remove review',

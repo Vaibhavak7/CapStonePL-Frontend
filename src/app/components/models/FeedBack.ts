@@ -3,7 +3,7 @@ export interface FeedBack {
     comment: string;
     feedbackId: number;
     rating: number;
-    postedDate: string; // You can also use Date if you convert it later
+    postedDate: string; 
     user: UserDTO;
   }
   

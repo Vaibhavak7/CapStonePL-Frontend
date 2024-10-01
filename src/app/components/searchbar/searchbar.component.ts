@@ -13,8 +13,19 @@ export class SearchbarComponent implements OnInit {
   cityData: string = '';
   isActive: boolean = false;
   suggestions: string[] = [
-    'Pune', 'Mumbai','Kolhapur'
-  ];
+    "Delhi",
+    "Lucknow",
+    "Bengaluru",
+    "Girigram",
+    "Mumbai",
+    "Uttarakhand",
+    "Nashik",
+    "Nagpur",
+    "Kolhapur",
+    "Solapur",
+    "Ratnagiri",
+    "Karjat"
+];
   filteredSuggestions: string[] = [];
   
   priceRanges: string[] = ['Under ₹5000', '₹5001-₹15000', '₹15001-₹30000', 'Above ₹30001'];
@@ -45,8 +56,7 @@ export class SearchbarComponent implements OnInit {
       );
     this.properties=this.prop.properties;
     this.suggestions=this.prop.cities;
-    console.log(this.features);
-    console.log("Property in Search",this.prop.properties)
+    
     })
     this.loadProperties()
   }
@@ -90,7 +100,7 @@ export class SearchbarComponent implements OnInit {
   updatePriceRange(event: Event): void {
     const inputElement = event.target as HTMLSelectElement;
     this.selectedPriceRange = inputElement.value;
-    console.log('Selected Price Range:', this.selectedPriceRange); 
+    
     this.clearOtherSelections('priceRange');
     this.prop.properties=this.properties;
     // Now filter the properties based on the selected price range
@@ -102,7 +112,7 @@ export class SearchbarComponent implements OnInit {
   
     this.prop.properties  = this.prop.properties.filter(property => {
       const rent = property.rent;
-      // Handle the case where maxPrice is undefined (for "Above ₹30001" range)
+      
       if (maxPrice === undefined) {
         return rent >= minPrice;
       }
@@ -114,7 +124,6 @@ export class SearchbarComponent implements OnInit {
     let minPrice: number;
     let maxPrice: number | undefined;
   
-    // Parse the selected price range
     switch (this.selectedPriceRange) {
       case 'Under ₹5000':
         minPrice = 0;
@@ -130,7 +139,7 @@ export class SearchbarComponent implements OnInit {
         break;
       case 'Above ₹30001':
         minPrice = 30001;
-        maxPrice = undefined; // No upper limit
+        maxPrice = undefined; 
         break;
       default:
         minPrice = 0;
@@ -146,15 +155,15 @@ export class SearchbarComponent implements OnInit {
     this.prop.properties=this.properties;
     this.selectedSortBy = event.target.value;
     this.clearOtherSelections('sortBy');
-    console.log('Selected Sort By (Price):', this.selectedSortBy);
+   
     if(this.selectedSortBy==='Price: Low to High')
     {
       this.prop.properties.sort((a, b) => a.rent - b.rent);
-      console.log('Sorted numbers (ascending):', this.prop.properties);
+     
     }
     else{
       this.prop.properties.sort((a, b) => b.rent - a.rent);
-      console.log('Sorted numbers (descending):', this.prop.properties);
+      
     }
   }
 
@@ -162,84 +171,82 @@ export class SearchbarComponent implements OnInit {
     this.prop.properties=this.properties;
     this.selectedRatingSortBy = event.target.value;
     this.clearOtherSelections('ratingSort');
-    console.log('Selected Sort By (Rating):', this.selectedRatingSortBy);
+   
     
   
     if (this.selectedRatingSortBy === 'Rating: Low to High') {
-      // Sort by avgRating, providing a fallback for undefined values
+      
       this.prop.properties.sort((a, b) => {
-        const ratingA = a.avgRating || 0; // Fallback to 0 if undefined
-        const ratingB = b.avgRating || 0; // Fallback to 0 if undefined
-        return ratingA - ratingB; // Ascending order
+        const ratingA = a.avgRating || 0;
+        const ratingB = b.avgRating || 0; 
+        return ratingA - ratingB; 
       });
-      console.log('Sorted by rating (ascending):', this.prop.properties);
+      
     } else {
-      // Sort by rent in descending order
+  
       this.prop.properties.sort((a, b) => {
-        const ratingA = a.avgRating || 0; // Fallback to 0 if undefined
+        const ratingA = a.avgRating || 0;
         const ratingB = b.avgRating || 0; 
         return ratingB - ratingA; 
       });
-      console.log('Sorted by rating (descending):', this.prop.properties);
+     
     }
   }
   
 
   
 updateFeatures(event: any): void {
-  this.selectedFeatures = event.target.value; // Capture the selected feature directly
-  console.log('Selected Feature:', this.selectedFeatures);
+  this.selectedFeatures = event.target.value; 
+  
   this.prop.properties=this.properties;
   this.clearOtherSelections('features');
-  // Call the method to filter properties based on selected features
   this.filterPropertiesByFeatures();
 }
 
 filterPropertiesByFeatures(): void {
-  const selectedFeature = this.selectedFeatures; // Use the selected feature as is (no trimming)
+  const selectedFeature = this.selectedFeatures; 
 
   this.prop.properties = this.prop.properties.filter(property => {
-    // Split the property's features string into an array and trim each feature
     const propertyFeatures = property.features.split(',').map(feature => feature.trim().toLowerCase());
 
-    // Check if the selected feature (trimmed for comparison) is included in the property's features (case-insensitive)
+    
     return propertyFeatures.includes(selectedFeature.trim().toLowerCase());
   });
 
-  console.log('Filtered Properties:', this.prop.properties);
+ 
 }
 clearOtherSelections(caller: string): void {
   switch (caller) {
     case 'priceRange':
-      this.selectedSortBy = ''; // Clear sort by price
-      this.selectedRatingSortBy = ''; // Clear sort by rating
-      this.selectedFeatures = ''; // Clear selected features
+      this.selectedSortBy = ''; 
+      this.selectedRatingSortBy = '';
+      this.selectedFeatures = ''; 
       break;
     case 'sortBy':
-      this.selectedPriceRange = ''; // Clear price range
-      this.selectedRatingSortBy = ''; // Clear sort by rating
-      this.selectedFeatures = ''; // Clear selected features
+      this.selectedPriceRange = ''; 
+      this.selectedRatingSortBy = ''; 
+      this.selectedFeatures = ''; 
       break;
     case 'ratingSort':
-      this.selectedPriceRange = ''; // Clear price range
-      this.selectedSortBy = ''; // Clear sort by price
-      this.selectedFeatures = ''; // Clear selected features
+      this.selectedPriceRange = ''; 
+      this.selectedSortBy = ''; 
+      this.selectedFeatures = ''; 
       break;
     case 'features':
-      this.selectedPriceRange = ''; // Clear price range
-      this.selectedSortBy = ''; // Clear sort by price
-      this.selectedRatingSortBy = ''; // Clear sort by rating
+      this.selectedPriceRange = ''; 
+      this.selectedSortBy = ''; 
+      this.selectedRatingSortBy = '';
       break;
       case 'start':
-      this.selectedPriceRange = ''; // Clear price range
-      this.selectedSortBy = ''; // Clear sort by price
-      this.selectedRatingSortBy = ''; // Clear sort by rating
+      this.selectedPriceRange = ''; 
+      this.selectedSortBy = '';
+      this.selectedRatingSortBy = ''; 
       this.selectedFeatures = '';
       break;
   }
 }
   onSubmit() {
-    // Build the search query based on selected filters
+    
     let query = {
       city: this.cityData.trim(),
       priceRange: this.selectedPriceRange,
@@ -248,21 +255,21 @@ clearOtherSelections(caller: string): void {
       features: this.selectedFeatures
     };
     this.clearOtherSelections('start');
-    // If cityData is empty, get all properties
+   
     if (query.city === '' && !this.isActive) {
       this.prop.getPropertiesAll().subscribe(data => {
         this.prop.properties = data;
         this.properties=data;
       });
-      console.log('No city input. Proceeding with fetching all properties.');
+      
     } else {
-      // Call the service with the provided search query
+      
       this.prop.getPropertiesLikeSearch(query.city).subscribe(data => {
-        // Apply additional filtering if needed
+        
         this.prop.properties = data;
         this.properties=data;
       });
-      console.log('Search Submitted:', query);
+      
     }
   }
 } 

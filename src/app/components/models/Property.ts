@@ -17,7 +17,7 @@ export class PropertyDTO {
     typeOfProperty: string;
     imageUrl: string;
     area: string;
-    postedOn: string;  // Default as empty string, you can convert it to Date later
+    postedOn: string; 
     maxGuests: number;
     avgRating?:number
   
@@ -38,7 +38,7 @@ export class PropertyDTO {
       this.typeOfProperty = '';
       this.imageUrl = '';
       this.area = '';
-      this.postedOn = ''; // Empty string to initialize, convert to Date if needed
+      this.postedOn = ''; 
       this.maxGuests = 0;
     }
   }

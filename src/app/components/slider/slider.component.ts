@@ -16,7 +16,7 @@ export class SliderComponent implements OnInit {
     { imageUrl: 'https://agarwalestates.com/images/blogs/property-management.jpg' }
   ];
 
-  activeSlide = 3; // Set initial active slide to 3 (centered)
+  activeSlide = 3; 
 
   constructor() {}
 
@@ -50,13 +50,13 @@ export class SliderComponent implements OnInit {
 
   nextSlide(): void {
     if (this.activeSlide < this.slides.length - 1) {
-      this.activeSlide++; // Increment the activeSlide
+      this.activeSlide++; 
     }
   }
 
   prevSlide(): void {
     if (this.activeSlide > 0) {
-      this.activeSlide--; // Decrement the activeSlide
+      this.activeSlide--; 
     }
   }
 }

@@ -18,11 +18,11 @@ export class HomeComponent implements OnInit {
   ];
  
   get slideWidth(): string {
-    return `${100 / this.slides.length}%`; // Calculate width of each slide
+    return `${100 / this.slides.length}%`; 
   }
 
   get transform(): string {
-    return `translateX(-${this.currentIndex * 100}%)`; // Calculate the transform value
+    return `translateX(-${this.currentIndex * 100}%)`; 
   }
 
   nextSlide(): void {
@@ -36,7 +36,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     setInterval(() => {
       this.nextSlide();
-    }, 100000); // Change slide every 5 seconds
-  console.log("Home Userdetails",this.auth.getUserDetails())
+    }, 100000); 
+  
   }
 }

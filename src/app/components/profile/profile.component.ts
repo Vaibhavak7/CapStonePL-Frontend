@@ -7,10 +7,10 @@ import { AuthService } from 'src/app/Service/Authenticate/auth.service';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  userDetails: any; // Assuming this holds user details
+  userDetails: any; 
   isUpdateModalOpen: boolean = false;
-  updatedUsername: string = ''; // Use updatedUsername instead of Username
-  updatedPassword: string = ''; // Add this if you are going to update the password
+  updatedUsername: string = ''; 
+  updatedPassword: string = ''; 
   newPropertyMessage: string = '';
 
   hotelFunFacts: string[] = [
@@ -39,18 +39,14 @@ export class ProfileComponent implements OnInit {
   constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
-    this.userDetails = this.authService.getUserDetails(); // Fetch user details here
+    this.userDetails = this.authService.getUserDetails(); 
     if (this.userDetails) {
-      this.updatedUsername = this.userDetails.userName; // Set the updated username from userDetails
-      console.log("Profile", this.userDetails.userName);
+      this.updatedUsername = this.userDetails.userName; 
+     
     } else {
       console.error("User details not found");
     }
-
-    // Fetch new property messages if needed
-    this.fetchNewPropertyMessage();
-    
-    // Randomly choose a hotel fun fact
+  
     this.randomizeFunFact();
   }
 
@@ -59,17 +55,6 @@ export class ProfileComponent implements OnInit {
     this.newPropertyMessage = this.hotelFunFacts[randomIndex];
   }
 
-  fetchNewPropertyMessage() {
-    // Uncomment and implement the method to fetch new property messages
-    // this.yourService.getNewPropertyMessage().subscribe(
-    //   (response: any) => {
-    //     this.newPropertyMessage = response.message; // Adjust based on API response structure
-    //   },
-    //   (error) => {
-    //     console.error('Error fetching new property messages:', error);
-    //   }
-    // );
-  }
 
   openUpdateModal(): void {
     this.isUpdateModalOpen = true;
@@ -80,11 +65,9 @@ export class ProfileComponent implements OnInit {
   }
 
   updateProfile(): void {
-    // Logic to update the user's profile (username and password)
-    console.log('Updated Username:', this.updatedUsername);
-    console.log('Updated Password:', this.updatedPassword);
-    // Call a method in AuthService to update the username/password
+   
+   
     this.authService.updateUserProfile(this.updatedUsername, this.updatedPassword);
-    this.closeUpdateModal(); // Close modal after updating
+    this.closeUpdateModal(); 
   }
 }

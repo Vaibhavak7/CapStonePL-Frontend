@@ -17,8 +17,8 @@ export class BookingsComponent {
   reviewText: string = ''; 
   currentPropertyId!: number;
   stars: number[] = [1, 2, 3, 4, 5];
-  selectedRating: number = 0; // To store the selected rating
-  hoveredRating: number = 0;  // To handle hover effect
+  selectedRating: number = 0; 
+  hoveredRating: number = 0; 
 
   constructor(private auth: AuthService, private bookingService: BookingService) {}
 
@@ -30,8 +30,8 @@ export class BookingsComponent {
   loadBookings(userId: number): void {
     this.bookingService.getBookingWithPropertyById(userId).subscribe(
       (response: Booking[]) => {
-        this.bookings = response;
-        console.log(this.bookings);
+        this.bookings = response.reverse();
+       
       },
       (error) => {
         console.error('Error fetching bookings', error);
@@ -53,9 +53,26 @@ export class BookingsComponent {
   postedDate: string = new Date().toISOString(); 
 
   submitReview(): void {
-    console.log('Submitting review for property', this.currentPropertyId);
-    console.log('Review:', this.reviewText);
-    console.log('Rating:', this.selectedRating); // Get the selected rating
+   
+    if (!this.reviewText.trim()) {
+      Swal.fire({
+        icon: 'warning',
+        title: 'Review Required',
+        text: 'Please enter your review text.',
+        confirmButtonText: 'OK'
+      });
+      return; 
+    }
+
+    if (this.selectedRating === 0) {
+      Swal.fire({
+        icon: 'warning',
+        title: 'Rating Required',
+        text: 'Please select a rating.',
+        confirmButtonText: 'OK'
+      });
+      return; 
+    }
 
     const feedbackData: FeedbackDTO = {
       user: { userId: this.userId },
@@ -65,13 +82,12 @@ export class BookingsComponent {
       postedDate: this.postedDate
     };
 
-    console.log(feedbackData);
+  
 
     this.bookingService.submitFeedback(feedbackData).subscribe({
       next: (response) => {
- 
         if (response.status === 201) {
-          Swal.fire({ 
+          Swal.fire({
             icon: 'success',
             title: 'Feedback submitted!',
             text: 'Your feedback has been successfully submitted.',
@@ -80,9 +96,8 @@ export class BookingsComponent {
         }
       },
       error: (error) => {
- 
         if (error.status === 409) {
-          console.log("Error with status 409")
+       
           Swal.fire({
             icon: 'warning',
             title: 'Feedback already submitted',
@@ -110,5 +125,10 @@ export class BookingsComponent {
 
   selectRating(rating: number): void {
     this.selectedRating = rating;
+  }
+  isFutureDate(endDate: string): boolean {
+    const today = new Date();
+    const bookingEndDate = new Date(endDate);
+    return bookingEndDate > today;
   }
 }

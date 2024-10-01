@@ -1,12 +1,12 @@
 .container {
-  background-color: #f8f9fa; /* Light background */
-  border-radius: 8px; /* Rounded corners */
+  background-color: #f8f9fa;
+  border-radius: 8px;
   padding: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .profile-header {
-  color: #016450; /* Your preferred color */
+  color: #016450;
 }
 
 .profile-info {
@@ -14,23 +14,23 @@
 }
 
 .profile-picture {
-  width: 120px; /* Adjust size as needed */
-  height: 120px; /* Adjust size as needed */
-  border-radius: 50%; /* Circular image */
-  border: 2px solid #016450; /* Border color */
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 2px solid #016450;
 }
 
 .btn {
-  background-color: #016450; /* Consistent button color */
+  background-color: #016450;
   color: white;
 }
 
 .btn:hover {
-  background-color: #014c3f; /* Darker shade on hover */
+  background-color: #014c3f;
 }
 
 .modal-header {
-  background-color: #016450; /* Modal header color */
+  background-color: #016450;
   color: white;
 }
 
@@ -40,29 +40,29 @@
 }
 
 .form-label {
-  color: #016450; /* Consistent label color */
+  color: #016450;
 }
 
 .new-property-message {
   text-align: center;
-  color: #333; /* Change color as needed */
-  border: 1px solid #ccc; /* Border for the facts container */
-  border-radius: 10px; /* Rounded corners */
-  padding: 20px; /* Padding around content */
-  margin: 20px auto; /* Centering */
-  max-width: 600px; /* Maximum width */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* More pronounced shadow */
-  position: relative; /* For positioning icons */
+  color: #333;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 600px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  position: relative;
 }
 
 .fact-container {
   display: flex;
-  align-items: center; /* Center items vertically */
-  justify-content: center; /* Center items horizontally */
+  align-items: center;
+  justify-content: center;
 }
 
 .fact-icon {
-  font-size: 24px; /* Size of the icons */
-  margin: 0 15px; /* Margin around icons */
-  color: #016450; /* Icon color */
+  font-size: 24px;
+  margin: 0 15px;
+  color: #016450;
 }

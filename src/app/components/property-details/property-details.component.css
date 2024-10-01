@@ -1,16 +1,16 @@
 /* Header start  */
 
 .property-header {
-  background-color: #f0f0f0; /* Light grey background */
+  background-color: #f0f0f0; 
   padding: 10px;
   padding-inline: 20px;
-  border-radius: 12px; /* Rounded corners */
-  border: 2px solid #016450; /* Greenish border */
+  border-radius: 12px; 
+  border: 2px solid #016450; 
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 20px; /* Side margins for spacing */
+  margin: 20px;
   margin-inline: 140px;
 }
 
@@ -22,36 +22,36 @@
 .header-property-name {
   font-size: 36px;
   font-weight: bold;
-  color: #016450; /* Default green color */
-  text-transform: uppercase; /* Capitalize property name */
+  color: #016450;
+  text-transform: uppercase; 
   position: relative;
 }
 
 .header-property-name::before {
   content: attr(data-name);
-  color: white; /* Inner white color */
+  color: white; 
   position: absolute;
   top: 0;
   left: 0;
-  z-index: -1; /* Place inner color behind the outer color */
-  text-shadow: 0 0 5px #016450; /* Green outer shadow effect */
+  z-index: -1; 
+  text-shadow: 0 0 5px #016450; 
 }
 
 .separator {
   font-size: 36px;
-  margin: 0 10px; /* Space around separator */
+  margin: 0 10px; 
 }
 
 .header-property-city {
   font-size: 36px;
   font-weight: bold;
-  color: #016450; /* Primary color */
+  color: #016450;
 }
 
 .header-info {
   display: flex;
   align-items: center;
-  gap: 20px; /* Space between info items */
+  gap: 20px; 
 }
 
 .header-max-guests, .header-rent {
@@ -65,10 +65,9 @@
 
 .header-review-stars {
   font-size: 20px;
-  color: #016450; /* Gold color for stars */
+  color: #016450; 
 }
 
-/* Responsive adjustments */
 @media (max-width: 1200px) {
   .property-header {
     margin-inline: 80px;
@@ -89,7 +88,7 @@
 
   .header-info {
     flex-direction: column;
-    gap: 10px; /* Reduce space between items */
+    gap: 10px;
   }
 }
 
@@ -114,7 +113,7 @@
 
   .header-info {
     flex-direction: column;
-    gap: 5px; /* Reduce space between items */
+    gap: 5px;
   }
 
   .header-max-guests, .header-rent {
@@ -147,7 +146,7 @@
 
   .header-info {
     flex-direction: column;
-    gap: 5px; /* Reduce space between items */
+    gap: 5px; 
   }
 
   .header-max-guests, .header-rent {
@@ -160,10 +159,6 @@
 }
 
 
-/* -- Header End */
-
-
-/* Image start  */
 .blcolor {
     background-color: #016450;
     font-family: "Segoe UI";
@@ -236,10 +231,6 @@
     letter-spacing: 1.5px;
     font-size: 14px;
   }
-  
- /* IMage End  */
-
- /* Poperty DEtails start  */
 
  .property-layout {
   display: flex;
@@ -348,13 +339,13 @@
   color: #016450;
   font-size: 24px;
   font-weight: bold;
-  color: initial; /* Default color */
+  color: initial; 
   margin-bottom: 10px;
 }
 
 .property-description {
   font-size: 16px;
-  font-style: italic; /* Italic text */
+  font-style: italic; 
   margin-bottom: 20px;
 }
 
@@ -384,16 +375,16 @@
 }
 
 .features-heading {
-  font-size: 16px; /* Same as feature item text */
+  font-size: 16px;
   font-weight: bold;
-  color: #016450; /* Heading color */
+  color: #016450; 
   margin-bottom: 10px;
 }
 
 .features-list {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px; /* Gap between items */
+  gap: 10px; 
 }
 
 .feature-item {
@@ -402,30 +393,27 @@
   border-radius: 4px;
   padding: 5px 10px;
   box-sizing: border-box;
-  flex: 1 1 auto; /* Allow items to grow and shrink */
+  flex: 1 1 auto; 
   text-align: center;
-  color: black; /* Feature item text color */
+  color: black; 
 }
 
 .address-property {
-  margin-top: 20px; /* Add top margin */
+  margin-top: 20px; 
 }
 
 @media (max-width: 768px) {
   .feature-item {
-    flex: 1 1 100%; /* Full width on smaller screens */
+    flex: 1 1 100%; 
   }
 }
 
 
- /* Property Details end  */
-  /* ---Review start>>>> */
-
   .review-heading {
     text-align: center;
-    font-size: 26px; /* Adjust size as needed */
+    font-size: 26px; 
     font-weight: bold;
-    color: #016450; /* Adjust color if needed */
+    color: #016450; 
     margin-bottom: 20px;
     position: relative;
 }
@@ -435,7 +423,7 @@
     display: block;
     width: 80px;
     height: 4px;
-    background-color: #016450; /* Color of the line */
+    background-color: #016450; 
     margin: 10px auto 0;
 }
   .review-slider-container {
@@ -445,23 +433,23 @@
     display: flex;
     align-items: center;
     overflow: hidden;
-    background-color: #fff; /* Background color for the container */
+    background-color: #fff; 
   }
   
   .slider-wrapper {
     display: flex;
     width: 100%;
-    transition: transform 0.5s ease; /* Smooth transition for sliding */
+    transition: transform 0.5s ease; 
   }
   
   .review-slide {
     flex: 1;
     text-align: center;
-    margin: 20px 10px; /* Margin added to the top and bottom */
-    background-color: #ffffff; /* Card background color */
-    border-radius: 10px; /* Rounded corners for cards */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow effect covering the entire card */
-    padding: 20px; /* Spacing inside the card */
+    margin: 20px 10px;
+    background-color: #ffffff; 
+    border-radius: 10px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    padding: 20px; 
   }
   
   .review-image {
@@ -469,19 +457,19 @@
     width: 100px;
     height: 100px;
     object-fit: cover;
-    margin-bottom: 10px; /* Space between image and text */
+    margin-bottom: 10px; 
   }
   
   .review-text {
     font-style: italic;
     margin-top: 10px;
-    color: #333; /* Text color */
+    color: #333;
   }
   
   .review-author {
     font-weight: bold;
     margin-top: 5px;
-    color: #016450; /* Author name color */
+    color: #016450; 
   }
   
   .review-position {
@@ -491,14 +479,14 @@
   
   .prev-slide, .next-slide {
     cursor: pointer;
-    width: 50px; /* Width of the button */
-    height: 50px; /* Height of the button */
-    padding: 10px 0; /* Vertical padding only */
+    width: 50px; 
+    height: 50px;
+    padding: 10px 0; 
     background-color: #ddd;
     border: none;
     font-size: 20px;
     transition: background-color 0.3s;
-    border-radius: 0; /* Square buttons */
+    border-radius: 0; 
     display: flex;
     align-items: center;
     justify-content: center;
@@ -518,9 +506,7 @@
     position: absolute;
     right: 10px;
   }
-/* --Review End-   */
 
-/* General Layout Styles */
 .container {
   padding: 20px;
 }
@@ -529,18 +515,16 @@
   margin-bottom: 20px;
 }
 
-/* Center property name, stars, and rent */
 .text-center {
   text-align: center;
 }
 
 .stars i {
-  font-size: 20px; /* Adjust star size if needed */
-  color: #FFD700; /* Gold color for stars */
-  margin: 0 2px; /* Spacing between stars */
+  font-size: 20px; 
+  color: #FFD700; 
+  margin: 0 2px;
 }
 
-/* Amenities container styles */
 .amenities-container {
   display: flex;
   flex-wrap: wrap;
@@ -567,35 +551,34 @@
 
 
 .custom-carousel {
-  max-width: 58%; /* Adjust the width as needed */
-  margin:60px auto; /* Adjust the margin as needed */
+  max-width: 58%; 
+  margin:60px auto; 
   border: #016450 5px ;
 }
 
 .custom-carousel .carousel-inner img {
-  height: auto; /* Ensure the images maintain their aspect ratio */
-  max-height: 500px; /* Adjust the maximum height as needed */
-  object-fit:  fill; /* Ensure the images cover the container without distortion */
+  height: auto; 
+  max-height: 500px; 
+  object-fit:  fill;
 }
 
 .wishlist-button {
-  background: transparent; /* Default background */
+  background: transparent; 
   border: none;
   cursor: pointer;
 }
 
 .wishlist-icon {
-  display: inline-block; /* To allow background color on the icon */
-  padding: 0.5rem; /* Add padding for clickable area */
+  display: inline-block; 
+  padding: 0.5rem; 
 }
 
 .wishlist-icon i {
-  transition: background-color 0.3s; /* Smooth transition for background */
+  transition: background-color 0.3s; 
 }
 
 .wishlist-icon i.active {
   color: #016450; 
-  /* border-radius: 50%; Optional: makes the background circular */
-  padding: 0.2rem; /* Adjust padding as needed */
+  padding: 0.2rem; 
 }
 

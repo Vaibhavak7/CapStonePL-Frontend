@@ -1,32 +1,27 @@
 <div class="container my-5 mx-auto">
-  <!-- Heading -->
   <h2 class="text-center booking-header">Your Booked Property</h2>
 
-  <!-- Booking Cards -->
   <div *ngIf="bookings.length > 0; else noBookingsTemplate">
     <div class="row">
       <div class="col-sm-6" *ngFor="let booking of bookings">
         <div class="card">
           <div class="card-body">
-            <!-- Property and Booking Information -->
             <div class="property-info">
               <h5 class="card-title">{{ booking.property.propertyName }}</h5>
             </div>
 
-            <!-- Start and End Dates -->
             <p class="card-text">Start Date: {{ booking.startDate }}</p>
             <p class="card-text">End Date: {{ booking.endDate }}</p>
             <p class="card-text">Property ID: {{ booking.property.propertyId }}</p>
-
-            <!-- Call to Action Buttons -->
+ 
             <button type="button" routerLink="/property/{{booking.property.propertyId}}"
               class="btn blcolor my-3 me-3 px-4 py-3 shadow-lg" aria-current="page">
               Book Again
               <span><img src="../../../assets/rightarrow.png" alt="arrow" class="img-fluid" style="height: 20px"></span>
             </button>
-            <!-- Review Button -->
             <button type="button" class="btn blcolor my-3 mx-5 px-4 py-3 shadow-lg"
-              (click)="openReviewModal(booking.property.propertyId)">
+              (click)="openReviewModal(booking.property.propertyId)" 
+              [disabled]="isFutureDate(booking.startDate)">
               Review Property
               <span><img src="../../../assets/rightarrow.png" alt="review" class="img-fluid"
                   style="height: 20px"></span>
@@ -37,7 +32,6 @@
     </div>
   </div>
 
-  <!-- No Bookings Template -->
   <ng-template #noBookingsTemplate>
     <div class="no-booking-message">
       <p>You have no bookmarked properties.</p>
@@ -45,7 +39,6 @@
   </ng-template>
 </div>
 
-<!-- Review Modal -->
 <div class="modal" tabindex="-1" *ngIf="isReviewModalOpen">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -59,8 +52,6 @@
             <label for="reviewText" class="form-label">Your Review</label>
             <textarea id="reviewText" class="form-control" [(ngModel)]="reviewText" name="reviewText"></textarea>
           </div>
-
-          <!-- Star Rating -->
           <p>Selected Rating:</p>
           <div class="star-rating">
             <i class="bi mx-2" *ngFor="let star of stars; let index = index" [ngClass]="{

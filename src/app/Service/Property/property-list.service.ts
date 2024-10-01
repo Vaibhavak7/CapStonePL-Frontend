@@ -18,8 +18,7 @@ export class PropertyListService {
     this.properties = [];
   }
 
-  getPropertiesLikeSearch(string1:string)
-  {
+  getPropertiesLikeSearch(string1: string) {
     return this.http.get<any>(`http://localhost:8080/api/properties/search/${string1}`);
   }
 
@@ -31,31 +30,23 @@ export class PropertyListService {
 
     return this.http.get<any[]>("http://localhost:8080/api/properties");
   }
-  getFeatuers()
-  {
+  getFeatuers() {
     return this.http.get<any[]>("http://localhost:8080/api/properties/featuers");
   }
 
- 
-  sortProperties(id : string)
-  {
-    console.log('Inside property',id);
-  }
 
   addToWishlist(bookmarkData: BookMark): Observable<HttpResponse<any>> {
     return this.http.post<any>('http://localhost:8080/api/properties/bookmarks/create', bookmarkData, {
-        observe: 'response',  // This allows you to get the full response
-        responseType: 'json'
+      observe: 'response',
+      responseType: 'json'
     });
-}
+  }
 
 
-
-  
   removeFromWishlist(propertyId: number) {
     return this.http.delete(`/api/wishlist/remove/${propertyId}`);
   }
-  
+
 
   getPropertiesByLocation(locationId: number) {
     return this.http.get<any[]>("http://localhost:8080/propertybylocation/" + locationId);
@@ -76,12 +67,12 @@ export class PropertyListService {
     let listFor = formData.listFor;
 
     let params = new HttpParams()
-                .set("locationId", locationId)
-                .set("categoryId", categoryId)
-                .set("listFor", listFor)
-                .set("sortBy", sortBy);
+      .set("locationId", locationId)
+      .set("categoryId", categoryId)
+      .set("listFor", listFor)
+      .set("sortBy", sortBy);
 
-    return this.http.get<any[]>("http://localhost:8080/propertybyfiltering", {params} );
+    return this.http.get<any[]>("http://localhost:8080/propertybyfiltering", { params });
   }
 
   getPropertyReviews(id: number) {
@@ -89,7 +80,7 @@ export class PropertyListService {
   }
 
   fetchAverageRating(propertyId: number): Observable<number> {
-    return this.http.get<number>(`http://localhost:8080/feedbacks/movie/${propertyId}/avg`);
-}
+    return this.http.get<number>(`http://localhost:8080/feedbacks/Property/${propertyId}/avg`);
+  }
 
 }

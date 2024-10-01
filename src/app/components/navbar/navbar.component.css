@@ -13,7 +13,7 @@ body {
 .action {
   position: relative;
   display: inline-block;
-  z-index: 1000; /* Ensure it's above other elements */
+  z-index: 1000; 
 }
 
 .action .profile {
@@ -126,7 +126,6 @@ body {
   border-bottom: none;
 }
 
-/* Additional styling for better alignment */
 .navbar-nav .btn {
   margin-left: 10px;
 }
@@ -147,5 +146,5 @@ body {
   background-image: url("data:image/svg+xml,...");
 }
 .pointer {
-  cursor: pointer; /* Change cursor to pointer */
+  cursor: pointer; 
 }

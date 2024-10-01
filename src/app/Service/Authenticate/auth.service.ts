@@ -10,27 +10,24 @@ import { UserDetails } from 'src/app/components/models/UserDetails';
   providedIn: 'root'
 })
 export class AuthService {
-  private userDetails: UserDetails = { userName: '', email: '', role: '', jwt: '', userId: 0 }; // Initialize userDetails
+  private userDetails: UserDetails = { userName: '', email: '', role: '', jwt: '', userId: 0 }; 
   public successFlag: boolean = false;
   public errorFlag: boolean = false;
   public isLoggedIn: boolean = false;
 
-  // Use BehaviorSubject to track login status
   private loginStatusSubject = new BehaviorSubject<boolean>(false);
   loginStatus$ = this.loginStatusSubject.asObservable();
 
   constructor(private http: HttpClient, private router: Router) {}
 
-  // Method to register a user
   register(user: UserCredentials): Observable<any> {
     return this.http.post<any>("http://localhost:8080/api/users/register", user);
   }
 
-  // Method to log in a user
   loginUser(user: UserCredentials): Observable<any> {
     return this.http.post<any>("http://localhost:8080/api/users/login", user).pipe(
       map(response => {
-        console.log('API Response:', response);
+        
         if (response && response.token) {
           this.userDetails = {
             userName: response.userName,
@@ -47,8 +44,7 @@ export class AuthService {
 
           const storedUser: any = { ...response, password: "user.password" };
           localStorage.setItem('currentUser', JSON.stringify(storedUser));
-
-          console.log('User details set:', response); // Debug log
+ 
 
           return response;
         } else {
@@ -62,21 +58,16 @@ export class AuthService {
         throw new Error(error);
       }));
   }
-
-  // Method to handle login errors
   private handleLoginError(message: string): void {
-    console.error(message);
+    
     this.successFlag = false;
     this.errorFlag = true;
     this.isLoggedIn = false;
 
-    // Emit login failure
     this.loginStatusSubject.next(false);
   }
 
-  // Expose user details if needed
   getUserDetails(): UserDetails {
-    // console.log("Get User Details:", this.userDetails); // Debug log
     return this.userDetails;
   }
 
@@ -84,7 +75,7 @@ export class AuthService {
     const currentUser: any = localStorage.getItem('currentUser');
     if (currentUser) {
       this.userDetails = JSON.parse(currentUser) as UserDetails;
-      console.log("User Details from Token:", this.userDetails); // Debug log
+       
     }
     return this.userDetails;
   }
@@ -92,8 +83,6 @@ export class AuthService {
   checkTokenValidity(): Observable<boolean> {
     const token = localStorage.getItem('jwt');
     const currentUser = localStorage.getItem('currentUser');
-
-    console.log(currentUser)
 
     if (currentUser) {
       const userId = JSON.parse(currentUser).userId;
@@ -114,24 +103,23 @@ export class AuthService {
                 userId: response.userId
               };
               this.isLoggedIn = true;
-              console.log('Token is valid', response);
-              return true; // Token is valid
+              return true; 
             }),
             catchError(error => {
-              console.error('Error fetching user:', error); // Log the error response
-              this.logout(); // Logout if there's an error
-              return of(false); // Token is not valid
+            
+              this.logout(); 
+              return of(false); 
             })
           );
       } else {
-        console.log("Token is not valid");
+      
         this.logout();
-        return of(false); // Token is not valid
+        return of(false); 
       }
     } else {
-      console.log("Token is not valid");
+      
       this.logout();
-      return of(false); // Token is not valid
+      return of(false); 
     }
   }
 
@@ -139,8 +127,8 @@ export class AuthService {
     localStorage.removeItem('jwt');
     localStorage.removeItem('currentUser');
     this.isLoggedIn = false;
-    this.userDetails = { userName: '', email: '', role: '', jwt: '', userId: 0 }; // Reset userDetails
-    // this.router.navigate(['/signup']);
+    this.userDetails = { userName: '', email: '', role: '', jwt: '', userId: 0 }; 
+  
   }
 
 
@@ -156,11 +144,10 @@ export class AuthService {
     return this.checkTokenValidity().pipe(
       tap(isValid => {
         if (isValid) {
-          // this.router.navigate(['/']);
-          console.log("Route valid",isValid)
+          
           return of(true); 
         } else {
-          console.log("Route not valid ",isValid)
+         
           this.router.navigate(['/'])
           return of(false); 
         }
